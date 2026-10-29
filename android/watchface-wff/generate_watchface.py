@@ -588,8 +588,10 @@ REGULAR = {
     "date_center": 296, "date_size": 28,
     "widget_size": 100, "widget_y": 58, "widget_x": [69, 175, 281],
     "logo": (197, 88),
-    "bottom_widget": (87, 328, 275, 62),
-    "battery_center": 393,
+    # Unlike the legacy watch face, the battery indicator doesn't replace the bottom widget: the widget is
+    # a bit higher and flatter and the battery indicator goes below it.
+    "bottom_widget": (87, 322, 275, 58),
+    "battery_center": 400,
 }
 
 ANDROID_12 = {
@@ -616,7 +618,7 @@ def regular_watch_face():
         complication_slot(0, "Left widget", l["widget_x"][0], l["widget_y"], s, s, 0),
         complication_slot(1, "Middle widget", l["widget_x"][1], l["widget_y"], s, s, 1, hidden_when="showWearOSLogo"),
         complication_slot(2, "Right widget", l["widget_x"][2], l["widget_y"], s, s, 2),
-        complication_slot(3, "Bottom widget", *l["bottom_widget"], 3, wide=True, hidden_when="showBattery"),
+        complication_slot(3, "Bottom widget", *l["bottom_widget"], 3, wide=True),
     ]
     return scene
 
@@ -758,6 +760,8 @@ def render_preview(flavor, path, debug=False):
         rects = [(x, y, l["widget_size"], l["widget_size"]) for y in l["widget_y"] for x in l["widget_x"]]
 
     if debug:
+        if flavor == "regular":
+            text(REGULAR["battery_center"], BATTERY_TEXT_SIZE, "85%")
         for x, y, w, h in rects:
             draw.rectangle([x * scale, y * scale, (x + w) * scale, (y + h) * scale], outline=(255, 0, 0, 255), width=2)
         draw.ellipse([0, 0, SIZE * scale, SIZE * scale], outline=(80, 80, 80, 255), width=2)

@@ -34,8 +34,8 @@ Differences with the legacy watch face:
 - One color setting for all widgets (the default keeps the WearOS blue/yellow/red/green per widget).
 - Size of date and widgets can't be changed.
 - Weather comes from the system weather data of WFF instead of a weather app complication.
-- When the WearOS logo or the battery indicator replaces a widget, its slot still shows in the editor but
-  nothing is drawn.
+- The battery indicator no longer replaces the bottom widget of the regular style, both are shown.
+- When the WearOS logo replaces the middle widget, its slot still shows in the editor but nothing is drawn.
 
 ## Editing
 
