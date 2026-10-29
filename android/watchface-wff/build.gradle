@@ -29,8 +29,8 @@ android {
         // Watch Face Format version 2 (weather data) requires Wear OS 5 (API 34)
         minSdk = 34
         targetSdk = 36
-        versionCode = 1
-        versionName = "2.5.0"
+        versionCode = 2
+        versionName = "2.5.1"
     }
 
     flavorDimensions = ['style']

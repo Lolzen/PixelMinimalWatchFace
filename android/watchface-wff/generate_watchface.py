@@ -227,33 +227,41 @@ def ambient_only(children, w=SIZE, h=SIZE):
     return group(children, w=w, h=h, alpha=0, variants=SHOW_IN_AMBIENT)
 
 
+# Settings are read in Condition expressions rather than with BooleanConfiguration / ListConfiguration
+# elements in the Scene: those can't be nested ("configuration options cannot be nested in their use",
+# https://developer.android.com/training/wearables/wff/personalization/user-configurations), and a nested
+# one never reacts to the setting.
+
+def setting_is(config_id, value):
+    return '[CONFIGURATION.%s] == "%s"' % (config_id, value)
+
+
 def boolean(config_id, if_true=None, if_false=None, w=SIZE, h=SIZE):
-    """BooleanOption takes a single child, so the content is wrapped in a Group."""
-    out = ['<BooleanConfiguration id="%s">' % config_id]
     if if_true:
-        out.append('<BooleanOption id="TRUE">%s</BooleanOption>' % group(if_true, w=w, h=h))
-    if if_false:
-        out.append('<BooleanOption id="FALSE">%s</BooleanOption>' % group(if_false, w=w, h=h))
-    out.append("</BooleanConfiguration>")
-    return "".join(out)
+        return condition([(setting_is(config_id, "TRUE"), [group(if_true, w=w, h=h)])],
+                         default=[group(if_false, w=w, h=h)] if if_false else None)
+    return condition([(setting_is(config_id, "FALSE"), [group(if_false, w=w, h=h)])])
 
 
 def list_config(config_id, options, w=SIZE, h=SIZE):
-    out = ['<ListConfiguration id="%s">' % config_id]
-    for option_id, children in options:
-        out.append('<ListOption id="%s">%s</ListOption>' % (option_id, group(children, w=w, h=h)))
-    out.append("</ListConfiguration>")
-    return "".join(out)
+    return condition([(setting_is(config_id, option_id), [group(children, w=w, h=h)]) for option_id, children in options])
+
+
+_expression_count = [0]
 
 
 def condition(compares, default=None):
-    """compares: list of (expression, children)."""
+    """compares: list of (expression, children), the first matching one is drawn."""
+    names = []
+    for _ in compares:
+        _expression_count[0] += 1
+        names.append("e%d" % _expression_count[0])
     out = ["<Condition><Expressions>"]
-    for index, (expression, _) in enumerate(compares):
-        out.append('<Expression name="c%d">%s</Expression>' % (index, escape(expression)))
+    for name, (expression, _) in zip(names, compares):
+        out.append('<Expression name="%s">%s</Expression>' % (name, escape(expression)))
     out.append("</Expressions>")
-    for index, (_, children) in enumerate(compares):
-        out.append('<Compare expression="c%d">%s</Compare>' % (index, "".join(children)))
+    for name, (_, children) in zip(names, compares):
+        out.append('<Compare expression="%s">%s</Compare>' % (name, "".join(children)))
     if default:
         out.append("<Default>%s</Default>" % "".join(default))
     out.append("</Condition>")
@@ -322,7 +330,8 @@ def time_text(center_y, size, pattern, hour_expression, thin, color, x=0, w=SIZE
         else template(pattern, hour_expression or "[MINUTE_Z]")
     if outline:
         # Thin style of the regular layout: the legacy watch face draws the time outline only
-        content = font(size, "#00000000", parts + '<Outline color="%s" width="2"/>' % attr(color), extra=spacing)
+        # Same as the Flavors sample of Google: the outline wraps the text, filled with the background color
+        content = font(size, "#FF000000", '<Outline color="%s" width="2">%s</Outline>' % (attr(color), parts), extra=spacing)
     else:
         content = font(size, color, parts, family=FONT_THIN if thin else FONT, extra=spacing)
     return centered_text(center_y, size, content, x=x, w=w)
@@ -736,6 +745,7 @@ def main():
     flavors = {"regular": regular_watch_face, "android12": android_12_watch_face}
     for flavor, build in flavors.items():
         _group_count[0] = 0
+        _expression_count[0] = 0
         content = pretty(watch_face(build()))
         write(os.path.join(MODULE_DIR, "src", flavor, "res", "raw", "watchface.xml"), content)
     write(os.path.join(RES_MAIN, "values", "strings.xml"), strings_xml())
