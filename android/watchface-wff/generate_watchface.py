@@ -174,6 +174,8 @@ BOOLEAN_SETTINGS = [
 ]
 
 TIME_SIZES = [("0", "Small", 0.9), ("1", "Normal", 1.0), ("2", "Large", 1.1)]
+DEFAULT_TIME_SIZE = "1"
+BOOLEAN_DEFAULTS = {config_id: default for config_id, _, default in BOOLEAN_SETTINGS}
 
 
 def user_configurations():
@@ -191,7 +193,8 @@ def user_configurations():
             out.append('<ColorOption id="%d" displayName="%s" colors="%s"/>' % (
                 index, string("color_" + slug(name), name), " ".join(values)))
         out.append("</ColorConfiguration>")
-    out.append('<ListConfiguration id="timeSize" displayName="%s" defaultValue="1">' % string("setting_time_size", "Size of time"))
+    out.append('<ListConfiguration id="timeSize" displayName="%s" defaultValue="%s">' % (
+        string("setting_time_size", "Size of time"), DEFAULT_TIME_SIZE))
     for option_id, label, _ in TIME_SIZES:
         out.append('<ListOption id="%s" displayName="%s"/>' % (option_id, string("time_size_" + slug(label), label)))
     out.append("</ListConfiguration>")
@@ -232,19 +235,31 @@ def ambient_only(children, w=SIZE, h=SIZE):
 # https://developer.android.com/training/wearables/wff/personalization/user-configurations), and a nested
 # one never reacts to the setting.
 
-def setting_is(config_id, value):
-    return '[CONFIGURATION.%s] == "%s"' % (config_id, value)
+# A setting the user never changed may not be set on the running watch face (the editor preview still
+# gets its default), so the expressions treat any value but the non default one as the default.
+
+def setting_enabled(config_id):
+    default = BOOLEAN_DEFAULTS[config_id]
+    return '!([CONFIGURATION.%s] == "FALSE")' % config_id if default else '[CONFIGURATION.%s] == "TRUE"' % config_id
+
+
+def setting_disabled(config_id):
+    default = BOOLEAN_DEFAULTS[config_id]
+    return '[CONFIGURATION.%s] == "FALSE"' % config_id if default else '!([CONFIGURATION.%s] == "TRUE")' % config_id
 
 
 def boolean(config_id, if_true=None, if_false=None, w=SIZE, h=SIZE):
     if if_true:
-        return condition([(setting_is(config_id, "TRUE"), [group(if_true, w=w, h=h)])],
+        return condition([(setting_enabled(config_id), [group(if_true, w=w, h=h)])],
                          default=[group(if_false, w=w, h=h)] if if_false else None)
-    return condition([(setting_is(config_id, "FALSE"), [group(if_false, w=w, h=h)])])
+    return condition([(setting_disabled(config_id), [group(if_false, w=w, h=h)])])
 
 
-def list_config(config_id, options, w=SIZE, h=SIZE):
-    return condition([(setting_is(config_id, option_id), [group(children, w=w, h=h)]) for option_id, children in options])
+def list_config(config_id, options, default_option, w=SIZE, h=SIZE):
+    compares = [('[CONFIGURATION.%s] == "%s"' % (config_id, option_id), [group(children, w=w, h=h)])
+                for option_id, children in options if option_id != default_option]
+    default = [group(children, w=w, h=h) for option_id, children in options if option_id == default_option]
+    return condition(compares, default=default)
 
 
 _expression_count = [0]
@@ -352,7 +367,7 @@ def time_block(build):
             if_false=[ambient_colored(lambda c: group(build(scale, True, c)), "timeColor")],
         )
         options.append((option_id, [active_only([active]), ambient_only([ambient])]))
-    return list_config("timeSize", options)
+    return list_config("timeSize", options, DEFAULT_TIME_SIZE)
 
 
 # Weather condition -> icon, see https://developer.android.com/training/wearables/wff/weather

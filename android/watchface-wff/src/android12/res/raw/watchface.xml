@@ -626,7 +626,7 @@
       </Group>
       <Condition>
         <Expressions>
-          <Expression name="e97">[CONFIGURATION.ambientDate] == "TRUE"</Expression>
+          <Expression name="e97">!([CONFIGURATION.ambientDate] == "FALSE")</Expression>
         </Expressions>
         <Compare expression="e97">
           <Group name="g31" x="0" y="0" width="450" height="450">
@@ -1121,8 +1121,7 @@
     <Condition>
       <Expressions>
         <Expression name="e110">[CONFIGURATION.timeSize] == "0"</Expression>
-        <Expression name="e111">[CONFIGURATION.timeSize] == "1"</Expression>
-        <Expression name="e112">[CONFIGURATION.timeSize] == "2"</Expression>
+        <Expression name="e111">[CONFIGURATION.timeSize] == "2"</Expression>
       </Expressions>
       <Compare expression="e110">
         <Group name="g81" x="0" y="0" width="450" height="450">
@@ -1236,116 +1235,6 @@
       </Compare>
       <Compare expression="e111">
         <Group name="g82" x="0" y="0" width="450" height="450">
-          <Group name="g63" x="0" y="0" width="450" height="450">
-            <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <Condition>
-              <Expressions>
-                <Expression name="e102">[CONFIGURATION.thinTime] == "TRUE"</Expression>
-              </Expressions>
-              <Compare expression="e102">
-                <Group name="g49" x="0" y="0" width="450" height="450">
-                  <PartText x="121" y="102" width="200" height="135">
-                    <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
-                  </PartText>
-                  <PartText x="121" y="193" width="200" height="135">
-                    <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
-                  </PartText>
-                </Group>
-              </Compare>
-              <Default>
-                <Group name="g50" x="0" y="0" width="450" height="450">
-                  <PartText x="121" y="102" width="200" height="135">
-                    <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
-                  </PartText>
-                  <PartText x="121" y="193" width="200" height="135">
-                    <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
-                  </PartText>
-                </Group>
-              </Default>
-            </Condition>
-          </Group>
-          <Group name="g64" x="0" y="0" width="450" height="450" alpha="0">
-            <Variant mode="AMBIENT" target="alpha" value="255"/>
-            <Condition>
-              <Expressions>
-                <Expression name="e105">[CONFIGURATION.ambientNormalTime] == "TRUE"</Expression>
-              </Expressions>
-              <Compare expression="e105">
-                <Group name="g61" x="0" y="0" width="450" height="450">
-                  <Condition>
-                    <Expressions>
-                      <Expression name="e103">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
-                    </Expressions>
-                    <Compare expression="e103">
-                      <Group name="g54" x="0" y="0" width="450" height="450">
-                        <Group name="g52" x="0" y="0" width="450" height="450" alpha="204">
-                          <Group name="g51" x="0" y="0" width="450" height="450">
-                            <PartText x="121" y="102" width="200" height="135">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
-                            </PartText>
-                            <PartText x="121" y="193" width="200" height="135">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
-                            </PartText>
-                          </Group>
-                        </Group>
-                      </Group>
-                    </Compare>
-                    <Default>
-                      <Group name="g55" x="0" y="0" width="450" height="450">
-                        <Group name="g53" x="0" y="0" width="450" height="450">
-                          <PartText x="121" y="102" width="200" height="135">
-                            <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="#FFDEDEDE" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
-                          </PartText>
-                          <PartText x="121" y="193" width="200" height="135">
-                            <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="#FFDEDEDE" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
-                          </PartText>
-                        </Group>
-                      </Group>
-                    </Default>
-                  </Condition>
-                </Group>
-              </Compare>
-              <Default>
-                <Group name="g62" x="0" y="0" width="450" height="450">
-                  <Condition>
-                    <Expressions>
-                      <Expression name="e104">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
-                    </Expressions>
-                    <Compare expression="e104">
-                      <Group name="g59" x="0" y="0" width="450" height="450">
-                        <Group name="g57" x="0" y="0" width="450" height="450" alpha="204">
-                          <Group name="g56" x="0" y="0" width="450" height="450">
-                            <PartText x="121" y="102" width="200" height="135">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
-                            </PartText>
-                            <PartText x="121" y="193" width="200" height="135">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
-                            </PartText>
-                          </Group>
-                        </Group>
-                      </Group>
-                    </Compare>
-                    <Default>
-                      <Group name="g60" x="0" y="0" width="450" height="450">
-                        <Group name="g58" x="0" y="0" width="450" height="450">
-                          <PartText x="121" y="102" width="200" height="135">
-                            <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="#FFDEDEDE" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
-                          </PartText>
-                          <PartText x="121" y="193" width="200" height="135">
-                            <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="#FFDEDEDE" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
-                          </PartText>
-                        </Group>
-                      </Group>
-                    </Default>
-                  </Condition>
-                </Group>
-              </Default>
-            </Condition>
-          </Group>
-        </Group>
-      </Compare>
-      <Compare expression="e112">
-        <Group name="g83" x="0" y="0" width="450" height="450">
           <Group name="g79" x="0" y="0" width="450" height="450">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Condition>
@@ -1454,12 +1343,122 @@
           </Group>
         </Group>
       </Compare>
+      <Default>
+        <Group name="g83" x="0" y="0" width="450" height="450">
+          <Group name="g63" x="0" y="0" width="450" height="450">
+            <Variant mode="AMBIENT" target="alpha" value="0"/>
+            <Condition>
+              <Expressions>
+                <Expression name="e102">[CONFIGURATION.thinTime] == "TRUE"</Expression>
+              </Expressions>
+              <Compare expression="e102">
+                <Group name="g49" x="0" y="0" width="450" height="450">
+                  <PartText x="121" y="102" width="200" height="135">
+                    <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
+                  </PartText>
+                  <PartText x="121" y="193" width="200" height="135">
+                    <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
+                  </PartText>
+                </Group>
+              </Compare>
+              <Default>
+                <Group name="g50" x="0" y="0" width="450" height="450">
+                  <PartText x="121" y="102" width="200" height="135">
+                    <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
+                  </PartText>
+                  <PartText x="121" y="193" width="200" height="135">
+                    <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
+                  </PartText>
+                </Group>
+              </Default>
+            </Condition>
+          </Group>
+          <Group name="g64" x="0" y="0" width="450" height="450" alpha="0">
+            <Variant mode="AMBIENT" target="alpha" value="255"/>
+            <Condition>
+              <Expressions>
+                <Expression name="e105">[CONFIGURATION.ambientNormalTime] == "TRUE"</Expression>
+              </Expressions>
+              <Compare expression="e105">
+                <Group name="g61" x="0" y="0" width="450" height="450">
+                  <Condition>
+                    <Expressions>
+                      <Expression name="e103">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                    </Expressions>
+                    <Compare expression="e103">
+                      <Group name="g54" x="0" y="0" width="450" height="450">
+                        <Group name="g52" x="0" y="0" width="450" height="450" alpha="204">
+                          <Group name="g51" x="0" y="0" width="450" height="450">
+                            <PartText x="121" y="102" width="200" height="135">
+                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
+                            </PartText>
+                            <PartText x="121" y="193" width="200" height="135">
+                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
+                            </PartText>
+                          </Group>
+                        </Group>
+                      </Group>
+                    </Compare>
+                    <Default>
+                      <Group name="g55" x="0" y="0" width="450" height="450">
+                        <Group name="g53" x="0" y="0" width="450" height="450">
+                          <PartText x="121" y="102" width="200" height="135">
+                            <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="#FFDEDEDE" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
+                          </PartText>
+                          <PartText x="121" y="193" width="200" height="135">
+                            <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="104" color="#FFDEDEDE" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
+                          </PartText>
+                        </Group>
+                      </Group>
+                    </Default>
+                  </Condition>
+                </Group>
+              </Compare>
+              <Default>
+                <Group name="g62" x="0" y="0" width="450" height="450">
+                  <Condition>
+                    <Expressions>
+                      <Expression name="e104">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                    </Expressions>
+                    <Compare expression="e104">
+                      <Group name="g59" x="0" y="0" width="450" height="450">
+                        <Group name="g57" x="0" y="0" width="450" height="450" alpha="204">
+                          <Group name="g56" x="0" y="0" width="450" height="450">
+                            <PartText x="121" y="102" width="200" height="135">
+                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
+                            </PartText>
+                            <PartText x="121" y="193" width="200" height="135">
+                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="[CONFIGURATION.timeColor.0]" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
+                            </PartText>
+                          </Group>
+                        </Group>
+                      </Group>
+                    </Compare>
+                    <Default>
+                      <Group name="g60" x="0" y="0" width="450" height="450">
+                        <Group name="g58" x="0" y="0" width="450" height="450">
+                          <PartText x="121" y="102" width="200" height="135">
+                            <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="#FFDEDEDE" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[IS_24_HOUR_MODE] ? [HOUR_0_23_Z] : [HOUR_1_12_Z]"/></Template></Font></Text>
+                          </PartText>
+                          <PartText x="121" y="193" width="200" height="135">
+                            <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_thin" size="104" color="#FFDEDEDE" letterSpacing="-0.12"><Template><![CDATA[%s]]><Parameter expression="[MINUTE_Z]"/></Template></Font></Text>
+                          </PartText>
+                        </Group>
+                      </Group>
+                    </Default>
+                  </Condition>
+                </Group>
+              </Default>
+            </Condition>
+          </Group>
+        </Group>
+      </Default>
     </Condition>
     <Condition>
       <Expressions>
-        <Expression name="e114">[CONFIGURATION.showWearOSLogo] == "TRUE"</Expression>
+        <Expression name="e113">!([CONFIGURATION.showWearOSLogo] == "FALSE")</Expression>
       </Expressions>
-      <Compare expression="e114">
+      <Compare expression="e113">
         <Group name="g87" x="0" y="0" width="450" height="450">
           <Group name="g84" x="0" y="0" width="450" height="450">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
@@ -1469,9 +1468,9 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e113">[CONFIGURATION.ambientLogo] == "TRUE"</Expression>
+              <Expression name="e112">!([CONFIGURATION.ambientLogo] == "FALSE")</Expression>
             </Expressions>
-            <Compare expression="e113">
+            <Compare expression="e112">
               <Group name="g86" x="0" y="0" width="450" height="450">
                 <Group name="g85" x="0" y="0" width="450" height="450" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
@@ -1487,54 +1486,54 @@
     </Condition>
     <Condition>
       <Expressions>
-        <Expression name="e156">[CONFIGURATION.showBattery] == "TRUE"</Expression>
+        <Expression name="e155">[CONFIGURATION.showBattery] == "TRUE"</Expression>
       </Expressions>
-      <Compare expression="e156">
+      <Compare expression="e155">
         <Group name="g108" x="0" y="0" width="450" height="450">
           <Condition>
             <Expressions>
-              <Expression name="e155">[CONFIGURATION.showWearOSLogo] == "TRUE"</Expression>
+              <Expression name="e154">!([CONFIGURATION.showWearOSLogo] == "FALSE")</Expression>
             </Expressions>
-            <Compare expression="e155">
+            <Compare expression="e154">
               <Group name="g106" x="0" y="0" width="450" height="450">
                 <Group name="g89" x="0" y="0" width="450" height="450">
                   <Variant mode="AMBIENT" target="alpha" value="0"/>
                   <Group name="g88" x="0" y="0" width="450" height="450">
                     <Condition>
                       <Expressions>
-                        <Expression name="e115">[BATTERY_PERCENT] &lt;= 10</Expression>
-                        <Expression name="e116">[BATTERY_PERCENT] &lt;= 25</Expression>
-                        <Expression name="e117">[BATTERY_PERCENT] &lt;= 40</Expression>
-                        <Expression name="e118">[BATTERY_PERCENT] &lt;= 50</Expression>
-                        <Expression name="e119">[BATTERY_PERCENT] &lt;= 70</Expression>
-                        <Expression name="e120">[BATTERY_PERCENT] &lt;= 90</Expression>
+                        <Expression name="e114">[BATTERY_PERCENT] &lt;= 10</Expression>
+                        <Expression name="e115">[BATTERY_PERCENT] &lt;= 25</Expression>
+                        <Expression name="e116">[BATTERY_PERCENT] &lt;= 40</Expression>
+                        <Expression name="e117">[BATTERY_PERCENT] &lt;= 50</Expression>
+                        <Expression name="e118">[BATTERY_PERCENT] &lt;= 70</Expression>
+                        <Expression name="e119">[BATTERY_PERCENT] &lt;= 90</Expression>
                       </Expressions>
-                      <Compare expression="e115">
+                      <Compare expression="e114">
                         <PartText x="0" y="378" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_10" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e116">
+                      <Compare expression="e115">
                         <PartText x="0" y="378" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_20" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e117">
+                      <Compare expression="e116">
                         <PartText x="0" y="378" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_40" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e118">
+                      <Compare expression="e117">
                         <PartText x="0" y="378" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_50" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e119">
+                      <Compare expression="e118">
                         <PartText x="0" y="378" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_60" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e120">
+                      <Compare expression="e119">
                         <PartText x="0" y="378" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_80" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
@@ -1549,55 +1548,55 @@
                 </Group>
                 <Condition>
                   <Expressions>
-                    <Expression name="e134">[CONFIGURATION.ambientBattery] == "TRUE"</Expression>
+                    <Expression name="e133">!([CONFIGURATION.ambientBattery] == "FALSE")</Expression>
                   </Expressions>
-                  <Compare expression="e134">
+                  <Compare expression="e133">
                     <Group name="g96" x="0" y="0" width="450" height="450">
                       <Group name="g95" x="0" y="0" width="450" height="450" alpha="0">
                         <Variant mode="AMBIENT" target="alpha" value="255"/>
                         <Condition>
                           <Expressions>
-                            <Expression name="e133">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                            <Expression name="e132">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                           </Expressions>
-                          <Compare expression="e133">
+                          <Compare expression="e132">
                             <Group name="g93" x="0" y="0" width="450" height="450">
                               <Group name="g91" x="0" y="0" width="450" height="450" alpha="204">
                                 <Group name="g90" x="0" y="0" width="450" height="450">
                                   <Condition>
                                     <Expressions>
-                                      <Expression name="e121">[BATTERY_PERCENT] &lt;= 10</Expression>
-                                      <Expression name="e122">[BATTERY_PERCENT] &lt;= 25</Expression>
-                                      <Expression name="e123">[BATTERY_PERCENT] &lt;= 40</Expression>
-                                      <Expression name="e124">[BATTERY_PERCENT] &lt;= 50</Expression>
-                                      <Expression name="e125">[BATTERY_PERCENT] &lt;= 70</Expression>
-                                      <Expression name="e126">[BATTERY_PERCENT] &lt;= 90</Expression>
+                                      <Expression name="e120">[BATTERY_PERCENT] &lt;= 10</Expression>
+                                      <Expression name="e121">[BATTERY_PERCENT] &lt;= 25</Expression>
+                                      <Expression name="e122">[BATTERY_PERCENT] &lt;= 40</Expression>
+                                      <Expression name="e123">[BATTERY_PERCENT] &lt;= 50</Expression>
+                                      <Expression name="e124">[BATTERY_PERCENT] &lt;= 70</Expression>
+                                      <Expression name="e125">[BATTERY_PERCENT] &lt;= 90</Expression>
                                     </Expressions>
-                                    <Compare expression="e121">
+                                    <Compare expression="e120">
                                       <PartText x="0" y="378" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_10" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e122">
+                                    <Compare expression="e121">
                                       <PartText x="0" y="378" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_20" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e123">
+                                    <Compare expression="e122">
                                       <PartText x="0" y="378" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_40" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e124">
+                                    <Compare expression="e123">
                                       <PartText x="0" y="378" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_50" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e125">
+                                    <Compare expression="e124">
                                       <PartText x="0" y="378" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_60" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e126">
+                                    <Compare expression="e125">
                                       <PartText x="0" y="378" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_80" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
@@ -1617,39 +1616,39 @@
                               <Group name="g92" x="0" y="0" width="450" height="450">
                                 <Condition>
                                   <Expressions>
-                                    <Expression name="e127">[BATTERY_PERCENT] &lt;= 10</Expression>
-                                    <Expression name="e128">[BATTERY_PERCENT] &lt;= 25</Expression>
-                                    <Expression name="e129">[BATTERY_PERCENT] &lt;= 40</Expression>
-                                    <Expression name="e130">[BATTERY_PERCENT] &lt;= 50</Expression>
-                                    <Expression name="e131">[BATTERY_PERCENT] &lt;= 70</Expression>
-                                    <Expression name="e132">[BATTERY_PERCENT] &lt;= 90</Expression>
+                                    <Expression name="e126">[BATTERY_PERCENT] &lt;= 10</Expression>
+                                    <Expression name="e127">[BATTERY_PERCENT] &lt;= 25</Expression>
+                                    <Expression name="e128">[BATTERY_PERCENT] &lt;= 40</Expression>
+                                    <Expression name="e129">[BATTERY_PERCENT] &lt;= 50</Expression>
+                                    <Expression name="e130">[BATTERY_PERCENT] &lt;= 70</Expression>
+                                    <Expression name="e131">[BATTERY_PERCENT] &lt;= 90</Expression>
                                   </Expressions>
-                                  <Compare expression="e127">
+                                  <Compare expression="e126">
                                     <PartText x="0" y="378" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_10" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e128">
+                                  <Compare expression="e127">
                                     <PartText x="0" y="378" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_20" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e129">
+                                  <Compare expression="e128">
                                     <PartText x="0" y="378" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_40" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e130">
+                                  <Compare expression="e129">
                                     <PartText x="0" y="378" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_50" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e131">
+                                  <Compare expression="e130">
                                     <PartText x="0" y="378" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_60" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e132">
+                                  <Compare expression="e131">
                                     <PartText x="0" y="378" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_80" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
@@ -1677,39 +1676,39 @@
                   <Group name="g97" x="0" y="0" width="450" height="450">
                     <Condition>
                       <Expressions>
-                        <Expression name="e135">[BATTERY_PERCENT] &lt;= 10</Expression>
-                        <Expression name="e136">[BATTERY_PERCENT] &lt;= 25</Expression>
-                        <Expression name="e137">[BATTERY_PERCENT] &lt;= 40</Expression>
-                        <Expression name="e138">[BATTERY_PERCENT] &lt;= 50</Expression>
-                        <Expression name="e139">[BATTERY_PERCENT] &lt;= 70</Expression>
-                        <Expression name="e140">[BATTERY_PERCENT] &lt;= 90</Expression>
+                        <Expression name="e134">[BATTERY_PERCENT] &lt;= 10</Expression>
+                        <Expression name="e135">[BATTERY_PERCENT] &lt;= 25</Expression>
+                        <Expression name="e136">[BATTERY_PERCENT] &lt;= 40</Expression>
+                        <Expression name="e137">[BATTERY_PERCENT] &lt;= 50</Expression>
+                        <Expression name="e138">[BATTERY_PERCENT] &lt;= 70</Expression>
+                        <Expression name="e139">[BATTERY_PERCENT] &lt;= 90</Expression>
                       </Expressions>
-                      <Compare expression="e135">
+                      <Compare expression="e134">
                         <PartText x="0" y="306" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_10" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e136">
+                      <Compare expression="e135">
                         <PartText x="0" y="306" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_20" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e137">
+                      <Compare expression="e136">
                         <PartText x="0" y="306" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_40" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e138">
+                      <Compare expression="e137">
                         <PartText x="0" y="306" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_50" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e139">
+                      <Compare expression="e138">
                         <PartText x="0" y="306" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_60" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
                       </Compare>
-                      <Compare expression="e140">
+                      <Compare expression="e139">
                         <PartText x="0" y="306" width="450" height="31">
                           <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_80" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                         </PartText>
@@ -1724,55 +1723,55 @@
                 </Group>
                 <Condition>
                   <Expressions>
-                    <Expression name="e154">[CONFIGURATION.ambientBattery] == "TRUE"</Expression>
+                    <Expression name="e153">!([CONFIGURATION.ambientBattery] == "FALSE")</Expression>
                   </Expressions>
-                  <Compare expression="e154">
+                  <Compare expression="e153">
                     <Group name="g105" x="0" y="0" width="450" height="450">
                       <Group name="g104" x="0" y="0" width="450" height="450" alpha="0">
                         <Variant mode="AMBIENT" target="alpha" value="255"/>
                         <Condition>
                           <Expressions>
-                            <Expression name="e153">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                            <Expression name="e152">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                           </Expressions>
-                          <Compare expression="e153">
+                          <Compare expression="e152">
                             <Group name="g102" x="0" y="0" width="450" height="450">
                               <Group name="g100" x="0" y="0" width="450" height="450" alpha="204">
                                 <Group name="g99" x="0" y="0" width="450" height="450">
                                   <Condition>
                                     <Expressions>
-                                      <Expression name="e141">[BATTERY_PERCENT] &lt;= 10</Expression>
-                                      <Expression name="e142">[BATTERY_PERCENT] &lt;= 25</Expression>
-                                      <Expression name="e143">[BATTERY_PERCENT] &lt;= 40</Expression>
-                                      <Expression name="e144">[BATTERY_PERCENT] &lt;= 50</Expression>
-                                      <Expression name="e145">[BATTERY_PERCENT] &lt;= 70</Expression>
-                                      <Expression name="e146">[BATTERY_PERCENT] &lt;= 90</Expression>
+                                      <Expression name="e140">[BATTERY_PERCENT] &lt;= 10</Expression>
+                                      <Expression name="e141">[BATTERY_PERCENT] &lt;= 25</Expression>
+                                      <Expression name="e142">[BATTERY_PERCENT] &lt;= 40</Expression>
+                                      <Expression name="e143">[BATTERY_PERCENT] &lt;= 50</Expression>
+                                      <Expression name="e144">[BATTERY_PERCENT] &lt;= 70</Expression>
+                                      <Expression name="e145">[BATTERY_PERCENT] &lt;= 90</Expression>
                                     </Expressions>
-                                    <Compare expression="e141">
+                                    <Compare expression="e140">
                                       <PartText x="0" y="306" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_10" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e142">
+                                    <Compare expression="e141">
                                       <PartText x="0" y="306" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_20" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e143">
+                                    <Compare expression="e142">
                                       <PartText x="0" y="306" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_40" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e144">
+                                    <Compare expression="e143">
                                       <PartText x="0" y="306" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_50" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e145">
+                                    <Compare expression="e144">
                                       <PartText x="0" y="306" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_60" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
                                     </Compare>
-                                    <Compare expression="e146">
+                                    <Compare expression="e145">
                                       <PartText x="0" y="306" width="450" height="31">
                                         <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.batteryColor.0]"><InlineImage resource="battery_80" width="22" height="22" color="[CONFIGURATION.batteryColor.0]"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                       </PartText>
@@ -1792,39 +1791,39 @@
                               <Group name="g101" x="0" y="0" width="450" height="450">
                                 <Condition>
                                   <Expressions>
-                                    <Expression name="e147">[BATTERY_PERCENT] &lt;= 10</Expression>
-                                    <Expression name="e148">[BATTERY_PERCENT] &lt;= 25</Expression>
-                                    <Expression name="e149">[BATTERY_PERCENT] &lt;= 40</Expression>
-                                    <Expression name="e150">[BATTERY_PERCENT] &lt;= 50</Expression>
-                                    <Expression name="e151">[BATTERY_PERCENT] &lt;= 70</Expression>
-                                    <Expression name="e152">[BATTERY_PERCENT] &lt;= 90</Expression>
+                                    <Expression name="e146">[BATTERY_PERCENT] &lt;= 10</Expression>
+                                    <Expression name="e147">[BATTERY_PERCENT] &lt;= 25</Expression>
+                                    <Expression name="e148">[BATTERY_PERCENT] &lt;= 40</Expression>
+                                    <Expression name="e149">[BATTERY_PERCENT] &lt;= 50</Expression>
+                                    <Expression name="e150">[BATTERY_PERCENT] &lt;= 70</Expression>
+                                    <Expression name="e151">[BATTERY_PERCENT] &lt;= 90</Expression>
                                   </Expressions>
-                                  <Compare expression="e147">
+                                  <Compare expression="e146">
                                     <PartText x="0" y="306" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_10" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e148">
+                                  <Compare expression="e147">
                                     <PartText x="0" y="306" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_20" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e149">
+                                  <Compare expression="e148">
                                     <PartText x="0" y="306" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_40" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e150">
+                                  <Compare expression="e149">
                                     <PartText x="0" y="306" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_50" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e151">
+                                  <Compare expression="e150">
                                     <PartText x="0" y="306" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_60" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
                                   </Compare>
-                                  <Compare expression="e152">
+                                  <Compare expression="e151">
                                     <PartText x="0" y="306" width="450" height="31">
                                       <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><InlineImage resource="battery_80" width="22" height="22" color="#FFDDDDDD"/><Template><![CDATA[%s%s]]><Parameter expression="[BATTERY_PERCENT]"/><Parameter expression="&quot;%&quot;"/></Template></Font></Text>
                                     </PartText>
@@ -1857,11 +1856,11 @@
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Condition>
               <Expressions>
-                <Expression name="e157">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e158">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e159">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e156">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e157">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e158">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e157">
+              <Compare expression="e156">
                 <PartImage x="36" y="12" width="28" height="28" tintColor="[CONFIGURATION.widgetColor.0]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -1872,7 +1871,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e158">
+              <Compare expression="e157">
                 <PartImage x="33" y="16" width="34" height="34" tintColor="[CONFIGURATION.widgetColor.0]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -1880,7 +1879,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e159">
+              <Compare expression="e158">
                 <PartText x="6" y="20" width="88" height="36">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="[CONFIGURATION.widgetColor.0]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -1897,26 +1896,26 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e185">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e184">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e185">
+            <Compare expression="e184">
               <Group name="g114" x="0" y="0" width="100" height="100">
                 <Group name="g113" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e184">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e183">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e184">
+                    <Compare expression="e183">
                       <Group name="g111" x="0" y="0" width="100" height="100">
                         <Group name="g110" x="0" y="0" width="100" height="100" alpha="204">
                           <Condition>
                             <Expressions>
-                              <Expression name="e166">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e167">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e168">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e165">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e166">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e167">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e166">
+                            <Compare expression="e165">
                               <PartImage x="36" y="12" width="28" height="28" tintColor="[CONFIGURATION.widgetColor.0]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -1927,7 +1926,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e167">
+                            <Compare expression="e166">
                               <PartImage x="33" y="16" width="34" height="34" tintColor="[CONFIGURATION.widgetColor.0]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -1935,7 +1934,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e168">
+                            <Compare expression="e167">
                               <PartText x="6" y="20" width="88" height="36">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="[CONFIGURATION.widgetColor.0]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -1956,11 +1955,11 @@
                       <Group name="g112" x="0" y="0" width="100" height="100">
                         <Condition>
                           <Expressions>
-                            <Expression name="e175">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e176">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e177">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e174">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e175">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e176">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e175">
+                          <Compare expression="e174">
                             <PartImage x="36" y="12" width="28" height="28" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -1971,7 +1970,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e176">
+                          <Compare expression="e175">
                             <PartImage x="33" y="16" width="34" height="34" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -1979,7 +1978,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e177">
+                          <Compare expression="e176">
                             <PartText x="6" y="20" width="88" height="36">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -2019,11 +2018,11 @@
             </PartDraw>
             <Condition>
               <Expressions>
-                <Expression name="e160">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e161">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e162">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e159">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e160">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e161">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e160">
+              <Compare expression="e159">
                 <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.0]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2034,7 +2033,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e161">
+              <Compare expression="e160">
                 <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.0]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2042,7 +2041,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e162">
+              <Compare expression="e161">
                 <PartText x="6" y="26" width="88" height="29">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.0]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -2059,17 +2058,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e187">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e186">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e187">
+            <Compare expression="e186">
               <Group name="g121" x="0" y="0" width="100" height="100">
                 <Group name="g120" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e186">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e185">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e186">
+                    <Compare expression="e185">
                       <Group name="g118" x="0" y="0" width="100" height="100">
                         <Group name="g117" x="0" y="0" width="100" height="100" alpha="204">
                           <PartDraw x="0" y="0" width="100" height="100">
@@ -2085,11 +2084,11 @@
                           </PartDraw>
                           <Condition>
                             <Expressions>
-                              <Expression name="e169">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e170">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e171">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e168">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e169">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e170">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e169">
+                            <Compare expression="e168">
                               <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.0]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2100,7 +2099,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e170">
+                            <Compare expression="e169">
                               <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.0]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2108,7 +2107,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e171">
+                            <Compare expression="e170">
                               <PartText x="6" y="26" width="88" height="29">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.0]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -2140,11 +2139,11 @@
                         </PartDraw>
                         <Condition>
                           <Expressions>
-                            <Expression name="e178">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e179">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e180">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e177">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e178">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e179">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e178">
+                          <Compare expression="e177">
                             <PartImage x="39" y="20" width="22" height="22" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2155,7 +2154,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e179">
+                          <Compare expression="e178">
                             <PartImage x="36" y="23" width="27" height="27" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2163,7 +2162,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e180">
+                          <Compare expression="e179">
                             <PartText x="6" y="26" width="88" height="29">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -2203,11 +2202,11 @@
             </PartDraw>
             <Condition>
               <Expressions>
-                <Expression name="e163">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e164">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e165">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e162">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e163">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e164">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e163">
+              <Compare expression="e162">
                 <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.0]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2218,7 +2217,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e164">
+              <Compare expression="e163">
                 <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.0]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2226,7 +2225,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e165">
+              <Compare expression="e164">
                 <PartText x="6" y="26" width="88" height="29">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.0]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -2243,17 +2242,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e189">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e188">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e189">
+            <Compare expression="e188">
               <Group name="g128" x="0" y="0" width="100" height="100">
                 <Group name="g127" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e188">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e187">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e188">
+                    <Compare expression="e187">
                       <Group name="g125" x="0" y="0" width="100" height="100">
                         <Group name="g124" x="0" y="0" width="100" height="100" alpha="204">
                           <PartDraw x="0" y="0" width="100" height="100">
@@ -2269,11 +2268,11 @@
                           </PartDraw>
                           <Condition>
                             <Expressions>
-                              <Expression name="e172">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e173">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e174">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e171">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e172">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e173">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e172">
+                            <Compare expression="e171">
                               <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.0]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2284,7 +2283,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e173">
+                            <Compare expression="e172">
                               <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.0]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2292,7 +2291,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e174">
+                            <Compare expression="e173">
                               <PartText x="6" y="26" width="88" height="29">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.0]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -2324,11 +2323,11 @@
                         </PartDraw>
                         <Condition>
                           <Expressions>
-                            <Expression name="e181">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e182">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e183">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e180">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e181">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e182">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e181">
+                          <Compare expression="e180">
                             <PartImage x="39" y="20" width="22" height="22" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2339,7 +2338,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e182">
+                          <Compare expression="e181">
                             <PartImage x="36" y="23" width="27" height="27" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2347,7 +2346,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e183">
+                          <Compare expression="e182">
                             <PartText x="6" y="26" width="88" height="29">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -2380,17 +2379,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e191">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e190">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e191">
+            <Compare expression="e190">
               <Group name="g135" x="0" y="0" width="100" height="100">
                 <Group name="g134" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e190">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e189">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e190">
+                    <Compare expression="e189">
                       <Group name="g132" x="0" y="0" width="100" height="100">
                         <Group name="g131" x="0" y="0" width="100" height="100" alpha="204">
                           <PartImage x="28" y="28" width="44" height="44" tintColor="[CONFIGURATION.widgetColor.0]">
@@ -2423,17 +2422,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e193">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e192">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e193">
+            <Compare expression="e192">
               <Group name="g142" x="0" y="0" width="100" height="100">
                 <Group name="g141" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e192">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e191">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e192">
+                    <Compare expression="e191">
                       <Group name="g139" x="0" y="0" width="100" height="100">
                         <Group name="g138" x="0" y="0" width="100" height="100" alpha="204">
                           <PartImage x="18" y="18" width="64" height="64">
@@ -2465,11 +2464,11 @@
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Condition>
               <Expressions>
-                <Expression name="e194">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e195">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e196">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e193">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e194">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e195">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e194">
+              <Compare expression="e193">
                 <PartImage x="36" y="12" width="28" height="28" tintColor="[CONFIGURATION.widgetColor.2]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2480,7 +2479,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e195">
+              <Compare expression="e194">
                 <PartImage x="33" y="16" width="34" height="34" tintColor="[CONFIGURATION.widgetColor.2]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2488,7 +2487,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e196">
+              <Compare expression="e195">
                 <PartText x="6" y="20" width="88" height="36">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="[CONFIGURATION.widgetColor.2]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -2505,26 +2504,26 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e222">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e221">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e222">
+            <Compare expression="e221">
               <Group name="g149" x="0" y="0" width="100" height="100">
                 <Group name="g148" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e221">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e220">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e221">
+                    <Compare expression="e220">
                       <Group name="g146" x="0" y="0" width="100" height="100">
                         <Group name="g145" x="0" y="0" width="100" height="100" alpha="204">
                           <Condition>
                             <Expressions>
-                              <Expression name="e203">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e204">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e205">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e202">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e203">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e204">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e203">
+                            <Compare expression="e202">
                               <PartImage x="36" y="12" width="28" height="28" tintColor="[CONFIGURATION.widgetColor.2]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2535,7 +2534,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e204">
+                            <Compare expression="e203">
                               <PartImage x="33" y="16" width="34" height="34" tintColor="[CONFIGURATION.widgetColor.2]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2543,7 +2542,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e205">
+                            <Compare expression="e204">
                               <PartText x="6" y="20" width="88" height="36">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="[CONFIGURATION.widgetColor.2]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -2564,11 +2563,11 @@
                       <Group name="g147" x="0" y="0" width="100" height="100">
                         <Condition>
                           <Expressions>
-                            <Expression name="e212">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e213">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e214">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e211">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e212">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e213">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e212">
+                          <Compare expression="e211">
                             <PartImage x="36" y="12" width="28" height="28" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2579,7 +2578,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e213">
+                          <Compare expression="e212">
                             <PartImage x="33" y="16" width="34" height="34" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2587,7 +2586,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e214">
+                          <Compare expression="e213">
                             <PartText x="6" y="20" width="88" height="36">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -2627,11 +2626,11 @@
             </PartDraw>
             <Condition>
               <Expressions>
-                <Expression name="e197">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e198">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e199">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e196">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e197">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e198">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e197">
+              <Compare expression="e196">
                 <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.2]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2642,7 +2641,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e198">
+              <Compare expression="e197">
                 <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.2]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2650,7 +2649,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e199">
+              <Compare expression="e198">
                 <PartText x="6" y="26" width="88" height="29">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.2]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -2667,17 +2666,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e224">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e223">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e224">
+            <Compare expression="e223">
               <Group name="g156" x="0" y="0" width="100" height="100">
                 <Group name="g155" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e223">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e222">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e223">
+                    <Compare expression="e222">
                       <Group name="g153" x="0" y="0" width="100" height="100">
                         <Group name="g152" x="0" y="0" width="100" height="100" alpha="204">
                           <PartDraw x="0" y="0" width="100" height="100">
@@ -2693,11 +2692,11 @@
                           </PartDraw>
                           <Condition>
                             <Expressions>
-                              <Expression name="e206">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e207">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e208">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e205">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e206">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e207">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e206">
+                            <Compare expression="e205">
                               <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.2]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2708,7 +2707,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e207">
+                            <Compare expression="e206">
                               <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.2]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2716,7 +2715,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e208">
+                            <Compare expression="e207">
                               <PartText x="6" y="26" width="88" height="29">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.2]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -2748,11 +2747,11 @@
                         </PartDraw>
                         <Condition>
                           <Expressions>
-                            <Expression name="e215">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e216">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e217">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e214">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e215">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e216">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e215">
+                          <Compare expression="e214">
                             <PartImage x="39" y="20" width="22" height="22" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2763,7 +2762,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e216">
+                          <Compare expression="e215">
                             <PartImage x="36" y="23" width="27" height="27" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2771,7 +2770,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e217">
+                          <Compare expression="e216">
                             <PartText x="6" y="26" width="88" height="29">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -2811,11 +2810,11 @@
             </PartDraw>
             <Condition>
               <Expressions>
-                <Expression name="e200">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e201">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e202">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e199">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e200">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e201">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e200">
+              <Compare expression="e199">
                 <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.2]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2826,7 +2825,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e201">
+              <Compare expression="e200">
                 <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.2]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -2834,7 +2833,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e202">
+              <Compare expression="e201">
                 <PartText x="6" y="26" width="88" height="29">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.2]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -2851,17 +2850,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e226">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e225">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e226">
+            <Compare expression="e225">
               <Group name="g163" x="0" y="0" width="100" height="100">
                 <Group name="g162" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e225">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e224">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e225">
+                    <Compare expression="e224">
                       <Group name="g160" x="0" y="0" width="100" height="100">
                         <Group name="g159" x="0" y="0" width="100" height="100" alpha="204">
                           <PartDraw x="0" y="0" width="100" height="100">
@@ -2877,11 +2876,11 @@
                           </PartDraw>
                           <Condition>
                             <Expressions>
-                              <Expression name="e209">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e210">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e211">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e208">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e209">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e210">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e209">
+                            <Compare expression="e208">
                               <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.2]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2892,7 +2891,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e210">
+                            <Compare expression="e209">
                               <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.2]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -2900,7 +2899,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e211">
+                            <Compare expression="e210">
                               <PartText x="6" y="26" width="88" height="29">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.2]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -2932,11 +2931,11 @@
                         </PartDraw>
                         <Condition>
                           <Expressions>
-                            <Expression name="e218">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e219">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e220">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e217">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e218">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e219">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e218">
+                          <Compare expression="e217">
                             <PartImage x="39" y="20" width="22" height="22" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2947,7 +2946,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e219">
+                          <Compare expression="e218">
                             <PartImage x="36" y="23" width="27" height="27" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -2955,7 +2954,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e220">
+                          <Compare expression="e219">
                             <PartText x="6" y="26" width="88" height="29">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -2988,17 +2987,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e228">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e227">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e228">
+            <Compare expression="e227">
               <Group name="g170" x="0" y="0" width="100" height="100">
                 <Group name="g169" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e227">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e226">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e227">
+                    <Compare expression="e226">
                       <Group name="g167" x="0" y="0" width="100" height="100">
                         <Group name="g166" x="0" y="0" width="100" height="100" alpha="204">
                           <PartImage x="28" y="28" width="44" height="44" tintColor="[CONFIGURATION.widgetColor.2]">
@@ -3031,17 +3030,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e230">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e229">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e230">
+            <Compare expression="e229">
               <Group name="g177" x="0" y="0" width="100" height="100">
                 <Group name="g176" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e229">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e228">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e229">
+                    <Compare expression="e228">
                       <Group name="g174" x="0" y="0" width="100" height="100">
                         <Group name="g173" x="0" y="0" width="100" height="100" alpha="204">
                           <PartImage x="18" y="18" width="64" height="64">
@@ -3073,11 +3072,11 @@
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Condition>
               <Expressions>
-                <Expression name="e231">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e232">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e233">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e230">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e231">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e232">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e231">
+              <Compare expression="e230">
                 <PartImage x="36" y="12" width="28" height="28" tintColor="[CONFIGURATION.widgetColor.1]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3088,7 +3087,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e232">
+              <Compare expression="e231">
                 <PartImage x="33" y="16" width="34" height="34" tintColor="[CONFIGURATION.widgetColor.1]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3096,7 +3095,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e233">
+              <Compare expression="e232">
                 <PartText x="6" y="20" width="88" height="36">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="[CONFIGURATION.widgetColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -3113,26 +3112,26 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e259">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e258">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e259">
+            <Compare expression="e258">
               <Group name="g184" x="0" y="0" width="100" height="100">
                 <Group name="g183" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e258">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e257">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e258">
+                    <Compare expression="e257">
                       <Group name="g181" x="0" y="0" width="100" height="100">
                         <Group name="g180" x="0" y="0" width="100" height="100" alpha="204">
                           <Condition>
                             <Expressions>
-                              <Expression name="e240">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e241">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e242">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e239">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e240">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e241">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e240">
+                            <Compare expression="e239">
                               <PartImage x="36" y="12" width="28" height="28" tintColor="[CONFIGURATION.widgetColor.1]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3143,7 +3142,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e241">
+                            <Compare expression="e240">
                               <PartImage x="33" y="16" width="34" height="34" tintColor="[CONFIGURATION.widgetColor.1]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3151,7 +3150,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e242">
+                            <Compare expression="e241">
                               <PartText x="6" y="20" width="88" height="36">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="[CONFIGURATION.widgetColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -3172,11 +3171,11 @@
                       <Group name="g182" x="0" y="0" width="100" height="100">
                         <Condition>
                           <Expressions>
-                            <Expression name="e249">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e250">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e251">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e248">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e249">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e250">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e249">
+                          <Compare expression="e248">
                             <PartImage x="36" y="12" width="28" height="28" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3187,7 +3186,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e250">
+                          <Compare expression="e249">
                             <PartImage x="33" y="16" width="34" height="34" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3195,7 +3194,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e251">
+                          <Compare expression="e250">
                             <PartText x="6" y="20" width="88" height="36">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -3235,11 +3234,11 @@
             </PartDraw>
             <Condition>
               <Expressions>
-                <Expression name="e234">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e235">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e236">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e233">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e234">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e235">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e234">
+              <Compare expression="e233">
                 <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.1]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3250,7 +3249,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e235">
+              <Compare expression="e234">
                 <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.1]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3258,7 +3257,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e236">
+              <Compare expression="e235">
                 <PartText x="6" y="26" width="88" height="29">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -3275,17 +3274,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e261">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e260">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e261">
+            <Compare expression="e260">
               <Group name="g191" x="0" y="0" width="100" height="100">
                 <Group name="g190" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e260">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e259">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e260">
+                    <Compare expression="e259">
                       <Group name="g188" x="0" y="0" width="100" height="100">
                         <Group name="g187" x="0" y="0" width="100" height="100" alpha="204">
                           <PartDraw x="0" y="0" width="100" height="100">
@@ -3301,11 +3300,11 @@
                           </PartDraw>
                           <Condition>
                             <Expressions>
-                              <Expression name="e243">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e244">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e245">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e242">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e243">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e244">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e243">
+                            <Compare expression="e242">
                               <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.1]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3316,7 +3315,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e244">
+                            <Compare expression="e243">
                               <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.1]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3324,7 +3323,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e245">
+                            <Compare expression="e244">
                               <PartText x="6" y="26" width="88" height="29">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -3356,11 +3355,11 @@
                         </PartDraw>
                         <Condition>
                           <Expressions>
-                            <Expression name="e252">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e253">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e254">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e251">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e252">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e253">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e252">
+                          <Compare expression="e251">
                             <PartImage x="39" y="20" width="22" height="22" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3371,7 +3370,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e253">
+                          <Compare expression="e252">
                             <PartImage x="36" y="23" width="27" height="27" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3379,7 +3378,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e254">
+                          <Compare expression="e253">
                             <PartText x="6" y="26" width="88" height="29">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -3419,11 +3418,11 @@
             </PartDraw>
             <Condition>
               <Expressions>
-                <Expression name="e237">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e238">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e239">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e236">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e237">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e238">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e237">
+              <Compare expression="e236">
                 <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.1]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3434,7 +3433,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e238">
+              <Compare expression="e237">
                 <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.1]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3442,7 +3441,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e239">
+              <Compare expression="e238">
                 <PartText x="6" y="26" width="88" height="29">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -3459,17 +3458,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e263">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e262">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e263">
+            <Compare expression="e262">
               <Group name="g198" x="0" y="0" width="100" height="100">
                 <Group name="g197" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e262">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e261">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e262">
+                    <Compare expression="e261">
                       <Group name="g195" x="0" y="0" width="100" height="100">
                         <Group name="g194" x="0" y="0" width="100" height="100" alpha="204">
                           <PartDraw x="0" y="0" width="100" height="100">
@@ -3485,11 +3484,11 @@
                           </PartDraw>
                           <Condition>
                             <Expressions>
-                              <Expression name="e246">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e247">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e248">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e245">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e246">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e247">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e246">
+                            <Compare expression="e245">
                               <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.1]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3500,7 +3499,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e247">
+                            <Compare expression="e246">
                               <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.1]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3508,7 +3507,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e248">
+                            <Compare expression="e247">
                               <PartText x="6" y="26" width="88" height="29">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.1]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -3540,11 +3539,11 @@
                         </PartDraw>
                         <Condition>
                           <Expressions>
-                            <Expression name="e255">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e256">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e257">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e254">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e255">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e256">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e255">
+                          <Compare expression="e254">
                             <PartImage x="39" y="20" width="22" height="22" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3555,7 +3554,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e256">
+                          <Compare expression="e255">
                             <PartImage x="36" y="23" width="27" height="27" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3563,7 +3562,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e257">
+                          <Compare expression="e256">
                             <PartText x="6" y="26" width="88" height="29">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -3596,17 +3595,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e265">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e264">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e265">
+            <Compare expression="e264">
               <Group name="g205" x="0" y="0" width="100" height="100">
                 <Group name="g204" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e264">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e263">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e264">
+                    <Compare expression="e263">
                       <Group name="g202" x="0" y="0" width="100" height="100">
                         <Group name="g201" x="0" y="0" width="100" height="100" alpha="204">
                           <PartImage x="28" y="28" width="44" height="44" tintColor="[CONFIGURATION.widgetColor.1]">
@@ -3639,17 +3638,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e267">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e266">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e267">
+            <Compare expression="e266">
               <Group name="g212" x="0" y="0" width="100" height="100">
                 <Group name="g211" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e266">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e265">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e266">
+                    <Compare expression="e265">
                       <Group name="g209" x="0" y="0" width="100" height="100">
                         <Group name="g208" x="0" y="0" width="100" height="100" alpha="204">
                           <PartImage x="18" y="18" width="64" height="64">
@@ -3681,11 +3680,11 @@
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Condition>
               <Expressions>
-                <Expression name="e268">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e269">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e270">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e267">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e268">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e269">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e268">
+              <Compare expression="e267">
                 <PartImage x="36" y="12" width="28" height="28" tintColor="[CONFIGURATION.widgetColor.3]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3696,7 +3695,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e269">
+              <Compare expression="e268">
                 <PartImage x="33" y="16" width="34" height="34" tintColor="[CONFIGURATION.widgetColor.3]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3704,7 +3703,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e270">
+              <Compare expression="e269">
                 <PartText x="6" y="20" width="88" height="36">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -3721,26 +3720,26 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e296">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e295">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e296">
+            <Compare expression="e295">
               <Group name="g219" x="0" y="0" width="100" height="100">
                 <Group name="g218" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e295">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e294">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e295">
+                    <Compare expression="e294">
                       <Group name="g216" x="0" y="0" width="100" height="100">
                         <Group name="g215" x="0" y="0" width="100" height="100" alpha="204">
                           <Condition>
                             <Expressions>
-                              <Expression name="e277">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e278">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e279">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e276">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e277">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e278">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e277">
+                            <Compare expression="e276">
                               <PartImage x="36" y="12" width="28" height="28" tintColor="[CONFIGURATION.widgetColor.3]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3751,7 +3750,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e278">
+                            <Compare expression="e277">
                               <PartImage x="33" y="16" width="34" height="34" tintColor="[CONFIGURATION.widgetColor.3]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3759,7 +3758,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e279">
+                            <Compare expression="e278">
                               <PartText x="6" y="20" width="88" height="36">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -3780,11 +3779,11 @@
                       <Group name="g217" x="0" y="0" width="100" height="100">
                         <Condition>
                           <Expressions>
-                            <Expression name="e286">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e287">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e288">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e285">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e286">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e287">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e286">
+                          <Compare expression="e285">
                             <PartImage x="36" y="12" width="28" height="28" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3795,7 +3794,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="19" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e287">
+                          <Compare expression="e286">
                             <PartImage x="33" y="16" width="34" height="34" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3803,7 +3802,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e288">
+                          <Compare expression="e287">
                             <PartText x="6" y="20" width="88" height="36">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="30" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -3843,11 +3842,11 @@
             </PartDraw>
             <Condition>
               <Expressions>
-                <Expression name="e271">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e272">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e273">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e270">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e271">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e272">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e271">
+              <Compare expression="e270">
                 <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.3]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3858,7 +3857,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e272">
+              <Compare expression="e271">
                 <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.3]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -3866,7 +3865,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e273">
+              <Compare expression="e272">
                 <PartText x="6" y="26" width="88" height="29">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -3883,17 +3882,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e298">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e297">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e298">
+            <Compare expression="e297">
               <Group name="g226" x="0" y="0" width="100" height="100">
                 <Group name="g225" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e297">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e296">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e297">
+                    <Compare expression="e296">
                       <Group name="g223" x="0" y="0" width="100" height="100">
                         <Group name="g222" x="0" y="0" width="100" height="100" alpha="204">
                           <PartDraw x="0" y="0" width="100" height="100">
@@ -3909,11 +3908,11 @@
                           </PartDraw>
                           <Condition>
                             <Expressions>
-                              <Expression name="e280">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e281">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e282">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e279">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e280">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e281">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e280">
+                            <Compare expression="e279">
                               <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.3]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3924,7 +3923,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e281">
+                            <Compare expression="e280">
                               <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.3]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -3932,7 +3931,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e282">
+                            <Compare expression="e281">
                               <PartText x="6" y="26" width="88" height="29">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -3964,11 +3963,11 @@
                         </PartDraw>
                         <Condition>
                           <Expressions>
-                            <Expression name="e289">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e290">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e291">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e288">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e289">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e290">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e289">
+                          <Compare expression="e288">
                             <PartImage x="39" y="20" width="22" height="22" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3979,7 +3978,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e290">
+                          <Compare expression="e289">
                             <PartImage x="36" y="23" width="27" height="27" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -3987,7 +3986,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e291">
+                          <Compare expression="e290">
                             <PartText x="6" y="26" width="88" height="29">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -4027,11 +4026,11 @@
             </PartDraw>
             <Condition>
               <Expressions>
-                <Expression name="e274">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                <Expression name="e275">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                <Expression name="e276">[COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e273">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                <Expression name="e274">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                <Expression name="e275">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
-              <Compare expression="e274">
+              <Compare expression="e273">
                 <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.3]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -4042,7 +4041,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e275">
+              <Compare expression="e274">
                 <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.3]">
                   <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                 </PartImage>
@@ -4050,7 +4049,7 @@
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
               </Compare>
-              <Compare expression="e276">
+              <Compare expression="e275">
                 <PartText x="6" y="26" width="88" height="29">
                   <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                 </PartText>
@@ -4067,17 +4066,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e300">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e299">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e300">
+            <Compare expression="e299">
               <Group name="g233" x="0" y="0" width="100" height="100">
                 <Group name="g232" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e299">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e298">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e299">
+                    <Compare expression="e298">
                       <Group name="g230" x="0" y="0" width="100" height="100">
                         <Group name="g229" x="0" y="0" width="100" height="100" alpha="204">
                           <PartDraw x="0" y="0" width="100" height="100">
@@ -4093,11 +4092,11 @@
                           </PartDraw>
                           <Condition>
                             <Expressions>
-                              <Expression name="e283">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                              <Expression name="e284">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                              <Expression name="e285">[COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e282">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                              <Expression name="e283">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                              <Expression name="e284">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
-                            <Compare expression="e283">
+                            <Compare expression="e282">
                               <PartImage x="39" y="20" width="22" height="22" tintColor="[CONFIGURATION.widgetColor.3]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -4108,7 +4107,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e284">
+                            <Compare expression="e283">
                               <PartImage x="36" y="23" width="27" height="27" tintColor="[CONFIGURATION.widgetColor.3]">
                                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                               </PartImage>
@@ -4116,7 +4115,7 @@
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
                             </Compare>
-                            <Compare expression="e285">
+                            <Compare expression="e284">
                               <PartText x="6" y="26" width="88" height="29">
                                 <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                               </PartText>
@@ -4148,11 +4147,11 @@
                         </PartDraw>
                         <Condition>
                           <Expressions>
-                            <Expression name="e292">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
-                            <Expression name="e293">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
-                            <Expression name="e294">[COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e291">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
+                            <Expression name="e292">[COMPLICATION.MONOCHROMATIC_IMAGE] != null</Expression>
+                            <Expression name="e293">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
-                          <Compare expression="e292">
+                          <Compare expression="e291">
                             <PartImage x="39" y="20" width="22" height="22" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -4163,7 +4162,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="15.2" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e293">
+                          <Compare expression="e292">
                             <PartImage x="36" y="23" width="27" height="27" tintColor="#FFDDDDDD">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -4171,7 +4170,7 @@
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20.8" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
                           </Compare>
-                          <Compare expression="e294">
+                          <Compare expression="e293">
                             <PartText x="6" y="26" width="88" height="29">
                               <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
                             </PartText>
@@ -4204,17 +4203,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e302">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e301">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e302">
+            <Compare expression="e301">
               <Group name="g240" x="0" y="0" width="100" height="100">
                 <Group name="g239" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e301">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e300">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e301">
+                    <Compare expression="e300">
                       <Group name="g237" x="0" y="0" width="100" height="100">
                         <Group name="g236" x="0" y="0" width="100" height="100" alpha="204">
                           <PartImage x="28" y="28" width="44" height="44" tintColor="[CONFIGURATION.widgetColor.3]">
@@ -4247,17 +4246,17 @@
           </Group>
           <Condition>
             <Expressions>
-              <Expression name="e304">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
+              <Expression name="e303">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
-            <Compare expression="e304">
+            <Compare expression="e303">
               <Group name="g247" x="0" y="0" width="100" height="100">
                 <Group name="g246" x="0" y="0" width="100" height="100" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
-                      <Expression name="e303">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
+                      <Expression name="e302">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
-                    <Compare expression="e303">
+                    <Compare expression="e302">
                       <Group name="g244" x="0" y="0" width="100" height="100">
                         <Group name="g243" x="0" y="0" width="100" height="100" alpha="204">
                           <PartImage x="18" y="18" width="64" height="64">
