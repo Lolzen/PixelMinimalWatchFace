@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Like Google's samples: only one instance of the watch face, so the editor updates the running one -->
 <WatchFaceInfo>
     <Preview value="@drawable/preview" />
-    <Editable value="true" />
-    <MultipleInstancesAllowed value="true" />
 </WatchFaceInfo>
