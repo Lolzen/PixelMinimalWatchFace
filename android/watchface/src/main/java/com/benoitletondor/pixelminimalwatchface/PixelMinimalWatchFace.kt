@@ -15,9 +15,11 @@
  */
 package com.benoitletondor.pixelminimalwatchface
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.*
 import android.content.*
+import android.content.pm.PackageManager
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.graphics.Canvas
 import android.graphics.Rect
@@ -36,6 +38,7 @@ import android.view.SurfaceHolder
 import android.view.WindowInsets
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import com.benoitletondor.pixelminimalwatchface.common.helper.openActivity
 import com.benoitletondor.pixelminimalwatchface.common.settings.model.ComplicationColors
 import com.benoitletondor.pixelminimalwatchface.common.settings.model.ComplicationLocation
@@ -248,6 +251,7 @@ class PixelMinimalWatchFace : CanvasWatchFaceService() {
             )
         }
 
+        @OptIn(ExperimentalCoroutinesApi::class)
         private fun onGalaxyWatch4HeartRateComplicationAdded() {
             if (DEBUG_LOGS) Log.d(TAG, "onGalaxyWatch4HeartRateComplicationAdded")
 
@@ -415,6 +419,10 @@ class PixelMinimalWatchFace : CanvasWatchFaceService() {
                     val now = LocalDateTime.now()
                     val seconds = now.second
                     val targetMinute = now.minute + 1
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+                        return
+                    }
 
                     if (nextGalaxyWatch4BugAlarmTargetMinute != targetMinute) {
                         nextGalaxyWatch4BugAlarmTargetMinute = targetMinute
@@ -841,6 +849,11 @@ class PixelMinimalWatchFace : CanvasWatchFaceService() {
                 .setAutoCancel(true)
                 .build()
 
+            // Since Wear OS 4 (API 33) posting requires a runtime permission the user has to grant in the app settings
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                ContextCompat.checkSelfPermission(service, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                return
+            }
 
             NotificationManagerCompat.from(service).notify(193828, notification)
         }

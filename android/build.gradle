@@ -13,29 +13,10 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-buildscript {
-    ext.kotlin_version = '1.9.21'
-    ext.hilt_version = '2.51.1'
-    ext.composer_compiler_version = '1.5.7'
-    ext.compose_bom = '2023.01.00'
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.7.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    // Not applied: AGP's built-in Kotlin support is used. Declaring it here pins the Kotlin version.
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.compose) apply false
 }

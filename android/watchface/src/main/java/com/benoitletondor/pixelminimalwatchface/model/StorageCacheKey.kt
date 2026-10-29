@@ -29,8 +29,8 @@ import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.onStart
 
 abstract class StorageCachedValue<T>(
-    private inline val getter: () -> T,
-    private inline val setter: (T) -> Unit,
+    private val getter: () -> T,
+    private val setter: (T) -> Unit,
 ) {
     private var cachedValue: MutableStateFlow<T?> = MutableStateFlow(null)
 

@@ -129,7 +129,7 @@ fun WatchSettingComplicationSlot(
                 if (iconDrawable != null) {
                     Image(
                         bitmap = iconDrawable.toBitmap(iconWidth, iconHeight).asImageBitmap(),
-                        contentDescription = complicationProviderInfo?.providerName,
+                        contentDescription = complicationProviderInfo.providerName,
                         colorFilter = color?.let { ColorFilter.tint(Color(it.color)) },
                     )
                 }
