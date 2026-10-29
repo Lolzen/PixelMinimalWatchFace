@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Like Google's samples: only one instance of the watch face, so the editor updates the running one -->
 <WatchFaceInfo>
     <Preview value="@drawable/preview" />
+    <!-- Required by some editors (e.g. OnePlus) to offer the settings and widgets -->
+    <Editable value="true" />
+    <!-- Single instance, so the editor updates the running watch face -->
+    <MultipleInstancesAllowed value="false" />
 </WatchFaceInfo>
