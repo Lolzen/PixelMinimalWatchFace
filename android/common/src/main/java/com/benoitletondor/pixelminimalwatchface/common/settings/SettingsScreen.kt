@@ -50,8 +50,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 interface SettingsScreen {
-    fun LazyListScope.BecomePremiumSection()
-
     val includeHeader: Boolean
     val includeFooter: Boolean
     val weatherTempScaleDisclaimer: String
@@ -62,11 +60,8 @@ interface SettingsScreen {
         platform: Platform,
         navController: NavController,
     ) {
-        val isUserPremium = true
         val useAndroid12 by platform.watchUseAndroid12Style().collectAsState(platform.useAndroid12Style())
         val showWatchBattery by platform.watchShowWatchBattery().collectAsState(platform.showWatchBattery())
-        val showPhoneBattery by platform.watchShowPhoneBattery().collectAsState(platform.showPhoneBattery())
-        val showNotifications by platform.watchIsNotificationsSyncActivated().collectAsState(platform.isNotificationsSyncActivated())
         val showComplicationsColorInAmbient by platform.watchShowColorsInAmbientMode().collectAsState(platform.showColorsInAmbientMode())
         val showWearOSLogo by platform.watchShowWearOSLogo().collectAsState(platform.showWearOSLogo())
 
@@ -92,58 +87,37 @@ interface SettingsScreen {
                 )
             }
 
-            if (isUserPremium) {
-                WidgetsSection(
-                    composeComponents = composeComponents,
-                    platform = platform,
-                    navController = navController,
-                    useAndroid12 = useAndroid12,
-                    showPhoneBattery = showPhoneBattery,
-                    showWatchBattery = showWatchBattery,
-                    showNotifications = showNotifications,
-                )
-            } else {
-                BecomePremiumSection()
-            }
+            WidgetsSection(
+                composeComponents = composeComponents,
+                platform = platform,
+                navController = navController,
+                useAndroid12 = useAndroid12,
+                showWatchBattery = showWatchBattery,
+            )
 
-            if (!showNotifications || !useAndroid12) {
-                item(key = "ShowWearOSLogo") {
-                    composeComponents.SettingToggleChip(
-                        label = if (useAndroid12 || !isUserPremium) { "Show WearOS logo" } else { "WearOS logo as middle widget" },
-                        checked = showWearOSLogo,
-                        onCheckedChange = platform::setShowWearOSLogo,
-                        iconDrawable = R.drawable.ic_wear_os_logo_white,
-                        modifier = Modifier.padding(top = 10.dp),
-                    )
-                }
-            }
-
-            if (isUserPremium) {
-                BatteryIndicatorSection(
-                    composeComponents = composeComponents,
-                    platform = platform,
-                    navController = navController,
-                    useAndroid12 = useAndroid12,
-                    showWatchBattery = showWatchBattery,
-                    showComplicationsColorInAmbient = showComplicationsColorInAmbient,
+            item(key = "ShowWearOSLogo") {
+                composeComponents.SettingToggleChip(
+                    label = if (useAndroid12) { "Show WearOS logo" } else { "WearOS logo as middle widget" },
+                    checked = showWearOSLogo,
+                    onCheckedChange = platform::setShowWearOSLogo,
+                    iconDrawable = R.drawable.ic_wear_os_logo_white,
+                    modifier = Modifier.padding(top = 10.dp),
                 )
             }
 
-            if (isUserPremium) {
-                NotificationsDisplaySection(
-                    composeComponents = composeComponents,
-                    platform = platform,
-                    navController = navController,
-                    useAndroid12 = useAndroid12,
-                    showComplicationsColorInAmbient = showComplicationsColorInAmbient,
-                )
-            }
+            BatteryIndicatorSection(
+                composeComponents = composeComponents,
+                platform = platform,
+                navController = navController,
+                useAndroid12 = useAndroid12,
+                showWatchBattery = showWatchBattery,
+                showComplicationsColorInAmbient = showComplicationsColorInAmbient,
+            )
 
             DateTimeSection(
                 composeComponents = composeComponents,
                 platform = platform,
                 navController = navController,
-                isUserPremium = isUserPremium,
                 showComplicationsColorInAmbient = showComplicationsColorInAmbient,
             )
 
@@ -155,11 +129,7 @@ interface SettingsScreen {
             AmbientSection(
                 composeComponents = composeComponents,
                 platform = platform,
-                isUserPremium = isUserPremium,
                 showWatchBattery = showWatchBattery,
-                showPhoneBattery = showPhoneBattery,
-                showNotifications = showNotifications,
-                useAndroid12 = useAndroid12,
                 showComplicationsColorInAmbient = showComplicationsColorInAmbient,
                 showWearOSLogo = showWearOSLogo,
             )
@@ -168,7 +138,6 @@ interface SettingsScreen {
                 composeComponents = composeComponents,
                 platform = platform,
                 navController = navController,
-                isUserPremium = isUserPremium,
             )
 
             if (includeFooter) {
@@ -193,9 +162,7 @@ interface SettingsScreen {
         platform: Platform,
         navController: NavController,
         useAndroid12: Boolean,
-        showPhoneBattery: Boolean,
         showWatchBattery: Boolean,
-        showNotifications: Boolean,
     ) {
         item(key = "WidgetsSection") { composeComponents.SettingSectionItem(label = "Widgets") }
 
@@ -213,8 +180,7 @@ interface SettingsScreen {
                     composeComponents = composeComponents,
                     platform = platform,
                     navController = navController,
-                    showBattery = showPhoneBattery || showWatchBattery,
-                    showNotifications = showNotifications,
+                    showBattery = showWatchBattery,
                 )
             }
         }
@@ -303,7 +269,6 @@ interface SettingsScreen {
         platform: Platform,
         navController: NavController,
         showBattery: Boolean,
-        showNotifications: Boolean,
     ) {
         val complicationColors by platform.watchComplicationColors().collectAsState(platform.getComplicationColors())
         val showWearOSLogo by platform.watchShowWearOSLogo().collectAsState(platform.showWearOSLogo())
@@ -356,17 +321,12 @@ interface SettingsScreen {
 
             composeComponents.SettingComplicationSlotContainer(
                 modifier = Modifier,
-                onClick = if (!showBattery && !showNotifications) { { platform.startWidgetConfigurationScreen(navController, ComplicationLocation.BOTTOM) } } else null,
+                onClick = if (!showBattery) { { platform.startWidgetConfigurationScreen(navController, ComplicationLocation.BOTTOM) } } else null,
             ) {
                 if (showBattery) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_baseline_battery_charging_full),
                         contentDescription = "Battery indicator",
-                    )
-                } else if (showNotifications) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_baseline_circle_notifications_24),
-                        contentDescription = "Phone notification icons",
                     )
                 } else {
                     composeComponents.SettingComplicationSlot(
@@ -396,7 +356,7 @@ interface SettingsScreen {
         if (!useAndroid12) {
             item(key = "BatteryIndicatorBottomWidgetWarning") {
                 composeComponents.PlatformText(
-                    text = "Activating any battery indicator replaces the bottom widget",
+                    text = "Activating the battery indicator replaces the bottom widget",
                     fontSize = 12.sp,
                     lineHeight = 14.sp,
                 )
@@ -427,23 +387,11 @@ interface SettingsScreen {
             )
         }
 
-        item(key = "PhoneBatteryIndicator") {
-            val activity = LocalContext.current as ComponentActivity
-
-            composeComponents.SettingChip(
-                label = "(Beta) Phone battery indicator setup",
-                onClick = {
-                    platform.startPhoneBatterySyncConfigScreen(navController, activity)
-                },
-                iconDrawable = R.drawable.ic_phone,
-            )
-        }
-
         item(key = "BatteryIndicatorsColor") {
             val activity = LocalContext.current as ComponentActivity
 
             composeComponents.SettingChip(
-                label = "Battery indicators colors",
+                label = "Battery indicator color",
                 secondaryLabel = if (showComplicationsColorInAmbient) null else "(doesn't affect ambient)",
                 onClick = {
                     activity.lifecycleScope.launch {
@@ -466,82 +414,10 @@ interface SettingsScreen {
         }
     }
 
-    private fun LazyListScope.NotificationsDisplaySection(
-        composeComponents: SettingsComposeComponents,
-        platform: Platform,
-        navController: NavController,
-        useAndroid12: Boolean,
-        showComplicationsColorInAmbient: Boolean,
-    ) {
-        item(key = "NotificationsDisplaySection") {
-            composeComponents.SettingSectionItem(
-                label = "Display phone notifications",
-                includeBottomPadding = false,
-            )
-        }
-
-        if (useAndroid12) {
-            item(key = "NotificationsDisplayBottomWidgetWarning") {
-                composeComponents.PlatformText(
-                    text = "Activating notifications display replaces the WearOS logo",
-                    fontSize = 12.sp,
-                    lineHeight = 14.sp,
-                )
-            }
-        } else {
-            item(key = "NotificationsDisplayBottomWidgetWarning") {
-                composeComponents.PlatformText(
-                    text = "Activating notifications display replaces the bottom widget",
-                    fontSize = 12.sp,
-                    lineHeight = 14.sp,
-                )
-            }
-        }
-
-        item(key = "NotificationsDisplayButton") {
-            val activity = LocalContext.current as ComponentActivity
-
-            composeComponents.SettingChip(
-                label = "(Beta) Phone notification icons",
-                onClick = {
-                    platform.startPhoneNotificationIconsConfigScreen(navController, activity)
-                },
-                iconDrawable = R.drawable.ic_baseline_circle_notifications_24,
-            )
-        }
-
-        item(key = "NotificationsDisplayColor") {
-            val activity = LocalContext.current as ComponentActivity
-
-            composeComponents.SettingChip(
-                label = "Notification icons colors",
-                secondaryLabel = if (showComplicationsColorInAmbient) null else "(doesn't affect ambient)",
-                onClick = {
-                    activity.lifecycleScope.launch {
-                        val selectedColor = platform.startColorSelectionScreen(navController, activity.getColor(R.color.white))
-                        if (selectedColor != null) {
-                            try {
-                                platform.setNotificationIconsColor(selectedColor.color)
-                            } catch (e: Exception) {
-                                if (e is CancellationException) { throw e }
-
-                                Log.e(TAG, "Error while setting notification icons colors", e)
-                                Toast.makeText(activity, "Unable to sync notification icons color", Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }
-                },
-                iconDrawable = R.drawable.ic_palette_24,
-                modifier = Modifier.heightIn(min = 73.dp),
-            )
-        }
-    }
-
     private fun LazyListScope.DateTimeSection(
         composeComponents: SettingsComposeComponents,
         platform: Platform,
         navController: NavController,
-        isUserPremium: Boolean,
         showComplicationsColorInAmbient: Boolean,
     ) {
         item(key = "DateTimeSection") {
@@ -564,7 +440,7 @@ interface SettingsScreen {
         }
 
         val weatherProvider = platform.weatherProvider
-        if( isUserPremium && weatherProvider.hasWeatherSupport ) {
+        if( weatherProvider.hasWeatherSupport ) {
             item(key = "ShowWeather") {
                 val showWeather by platform.watchShowWeather().collectAsState(platform.showWeather())
                 val activity = LocalContext.current as ComponentActivity
@@ -794,11 +670,7 @@ interface SettingsScreen {
     private fun LazyListScope.AmbientSection(
         composeComponents: SettingsComposeComponents,
         platform: Platform,
-        isUserPremium: Boolean,
         showWatchBattery: Boolean,
-        showPhoneBattery: Boolean,
-        showNotifications: Boolean,
-        useAndroid12: Boolean,
         showWearOSLogo: Boolean,
         showComplicationsColorInAmbient: Boolean,
     ) {
@@ -819,25 +691,23 @@ interface SettingsScreen {
             )
         }
 
-        if (isUserPremium) {
-            item(key= "ComplicationsInAmbientMode") {
-                val showComplicationsInAmbient by platform.watchShowComplicationsInAmbientMode().collectAsState(platform.showComplicationsInAmbientMode())
+        item(key= "ComplicationsInAmbientMode") {
+            val showComplicationsInAmbient by platform.watchShowComplicationsInAmbientMode().collectAsState(platform.showComplicationsInAmbientMode())
 
-                composeComponents.SettingToggleChip(
-                    label = "Widgets in ambient mode",
-                    checked = showComplicationsInAmbient,
-                    onCheckedChange = platform::setShowComplicationsInAmbientMode,
-                    iconDrawable = R.drawable.ic_settings_power,
-                )
-            }
+            composeComponents.SettingToggleChip(
+                label = "Widgets in ambient mode",
+                checked = showComplicationsInAmbient,
+                onCheckedChange = platform::setShowComplicationsInAmbientMode,
+                iconDrawable = R.drawable.ic_settings_power,
+            )
         }
 
-        if (isUserPremium && (showWatchBattery || showPhoneBattery)) {
+        if (showWatchBattery) {
             item(key = "ShowBatteryInAmbientMode") {
                 val hideBatteryInAmbient by platform.watchHideBatteryInAmbient().collectAsState(platform.hideBatteryInAmbient())
 
                 composeComponents.SettingToggleChip(
-                    label = "Show battery indicators in ambient mode",
+                    label = "Show battery indicator in ambient mode",
                     checked = !hideBatteryInAmbient,
                     onCheckedChange = { platform.setHideBatteryInAmbient(!it) },
                     iconDrawable = R.drawable.ic_settings_power,
@@ -846,21 +716,7 @@ interface SettingsScreen {
             }
         }
 
-        if (isUserPremium && showNotifications) {
-            item(key = "ShowNotificationsInAmbientMode") {
-                val showNotificationsInAmbient by platform.watchShowNotificationsInAmbient().collectAsState(platform.getShowNotificationsInAmbient())
-
-                composeComponents.SettingToggleChip(
-                    label = "Show notifications in ambient mode",
-                    checked = showNotificationsInAmbient,
-                    onCheckedChange = platform::setShowNotificationsInAmbient,
-                    iconDrawable = R.drawable.ic_baseline_notifications_none_24,
-                    modifier = Modifier.heightIn(min = 70.dp),
-                )
-            }
-        }
-
-        if (showWearOSLogo && (!showNotifications || !useAndroid12)) {
+        if (showWearOSLogo) {
             item(key = "ShowWearOSLogoInAmbientMode") {
                 val showWearOSLogoInAmbient by platform.watchShowWearOSLogoInAmbient().collectAsState(platform.getShowWearOSLogoInAmbient())
 
@@ -890,7 +746,6 @@ interface SettingsScreen {
         composeComponents: SettingsComposeComponents,
         platform: Platform,
         navController: NavController,
-        isUserPremium: Boolean
     ) {
         item(key = "SupportSection") {
             composeComponents.SettingSectionItem(
@@ -908,18 +763,6 @@ interface SettingsScreen {
                 },
                 iconDrawable = R.drawable.ic_thumbs_up_down,
             )
-        }
-
-        if (isUserPremium) {
-            item(key = "Donate") {
-                val activity = LocalContext.current as ComponentActivity
-
-                composeComponents.SettingChip(
-                    label = "Donate to support development",
-                    onClick = { platform.startDonationScreen(navController, activity) },
-                    iconDrawable = R.drawable.ic_baseline_add_reaction,
-                )
-            }
         }
     }
 

@@ -64,7 +64,7 @@ class SettingsActivity : ComponentActivity() {
         }
 
         watchPlatform = WatchPlatform(this, Injection.storage(this), permissionRequestActivityLauncher)
-        watchSettingsScreen = WatchSettingsScreen(watchPlatform)
+        watchSettingsScreen = WatchSettingsScreen()
 
         setContent {
             val swipeDismissableNavController = rememberSwipeDismissableNavController()

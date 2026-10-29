@@ -28,14 +28,9 @@ interface Platform {
 
     suspend fun requestComplicationsPermission(activity: ComponentActivity): Boolean
 
-    fun startPhoneBatterySyncConfigScreen(navController: NavController, activity: ComponentActivity)
-    fun startPhoneNotificationIconsConfigScreen(navController: NavController, activity: ComponentActivity)
     fun startFeedbackScreen(navController: NavController, activity: ComponentActivity)
-    fun startDonationScreen(navController: NavController, activity: ComponentActivity)
     suspend fun startColorSelectionScreen(navController: NavController, @ColorInt defaultColor: Int): ComplicationColor?
     fun startWidgetConfigurationScreen(navController: NavController, complicationLocation: ComplicationLocation)
-
-    fun isUserPremium(): Boolean
 
     fun showWearOSLogo(): Boolean
     suspend fun setShowWearOSLogo(shouldShowWearOSLogo: Boolean)
@@ -80,9 +75,6 @@ interface Platform {
     suspend fun setShowDateInAmbient(showDateInAmbient: Boolean)
     fun getShowDateInAmbient(): Boolean
     fun watchShowDateInAmbient(): Flow<Boolean>
-    fun showPhoneBattery(): Boolean
-    suspend fun setShowPhoneBattery(show: Boolean)
-    fun watchShowPhoneBattery(): Flow<Boolean>
     suspend fun setTimeColor(@ColorInt color: Int)
     suspend fun setDateColor(@ColorInt color: Int)
     suspend fun setBatteryIndicatorColor(@ColorInt color: Int)
@@ -93,13 +85,6 @@ interface Platform {
     suspend fun setHideBatteryInAmbient(hide: Boolean)
     fun watchHideBatteryInAmbient(): Flow<Boolean>
     suspend fun setSecondRingColor(@ColorInt color: Int)
-    fun isNotificationsSyncActivated(): Boolean
-    suspend fun setNotificationsSyncActivated(activated: Boolean)
-    fun watchIsNotificationsSyncActivated(): Flow<Boolean>
-    suspend fun setNotificationIconsColor(@ColorInt color: Int)
-    fun getShowNotificationsInAmbient(): Boolean
-    suspend fun setShowNotificationsInAmbient(show: Boolean)
-    fun watchShowNotificationsInAmbient(): Flow<Boolean>
     fun getShowWearOSLogoInAmbient(): Boolean
     suspend fun setShowWearOSLogoInAmbient(show: Boolean)
     fun watchShowWearOSLogoInAmbient(): Flow<Boolean>

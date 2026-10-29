@@ -26,11 +26,7 @@
     <string name="config_android_12_bottom_left_complication">Bottom left widget settings</string>
     <string name="config_android_12_bottom_right_complication">Bottom right widget settings</string>
 
-    <string name="premium_confirmation">Configure widgets in Watch Face settings</string>
-    <string name="premium_error">An error occurred, send me an email for assistance</string>
     <string name="open_phone_url_android_device">Continue on your phone</string>
-    <string name="open_phone_url_android_device_failure">Open Pixel Minimal Watch Face app on your phone</string>
-    <string name="open_phone_url_ios_device">You need an Android phone to install the companion app.</string>
 
     <string name="misc_notification_channel_name">Misc</string>
     <string name="misc_notification_channel_description">Help improve the product by asking for your feedback</string>
@@ -39,10 +35,5 @@
     <string name="rating_notification_cta">Give feedback</string>
     <string name="rating_feedback_send_error">Unable to open feedback email.\nInstall the app on your phone to send your feedback.</string>
     <string name="rating_feedback_send_text"></string>
-    <string name="feature_drop_notification_title">New feature drop</string>
-    <string name="feature_drop_notification_message">New features are available for Pixel Minimal Watch Face!</string>
-    <string name="feature_drop_notification_cta">See what\'s new</string>
 
-    <string name="phone_battery_configuration_title">(Beta) Phone battery sync setup</string>
-    <string name="phone_battery_configuration_troubleshoot_title">(Beta) Phone battery sync troubleshoot</string>
 </resources>

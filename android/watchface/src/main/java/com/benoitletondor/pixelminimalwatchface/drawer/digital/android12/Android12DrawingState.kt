@@ -44,15 +44,13 @@ sealed class Android12DrawingState {
         val timeCharWidth: Int,
         val complicationsDrawingCache: ComplicationsDrawingCache,
     ) : Android12DrawingState(),
-        BatteryDrawer by BatteryDrawerImpl(context, centerX, screenWidth, batteryIconSize, batteryLevelBottomY, batteryIconBottomY),
+        BatteryDrawer by BatteryDrawerImpl(context, centerX, batteryIconSize, batteryLevelBottomY, batteryIconBottomY),
         SecondsRingDrawer by SecondRingDrawerImpl(screenWidth, screenHeight),
-        DateAndWeatherDrawer by DateAndWeatherDrawerImpl(context, dateHeight, dateYOffset, centerX),
-        NotificationsDrawer by NotificationsDrawerImpl(context, centerX, complicationsDrawingCache.notificationsRect)
+        DateAndWeatherDrawer by DateAndWeatherDrawerImpl(context, dateHeight, dateYOffset, centerX)
 }
 
 data class ComplicationsDrawingCache(
     val wearOSLogoAmbient: Bitmap,
     val wearOSLogo: Bitmap,
     val wearOSLogoRect: Rect,
-    val notificationsRect: Rect,
 )

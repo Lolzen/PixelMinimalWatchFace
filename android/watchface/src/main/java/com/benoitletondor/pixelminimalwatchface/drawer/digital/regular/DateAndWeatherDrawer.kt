@@ -34,7 +34,6 @@ interface DateAndWeatherDrawer {
         canvas: Canvas,
         weatherComplicationData: ComplicationData?,
         useShortDateFormat: Boolean,
-        isUserPremium: Boolean,
         calendar: Calendar,
         datePaint: Paint,
         spaceBeforeWeather: Int,
@@ -73,7 +72,6 @@ class DateAndWeatherDrawerImpl(
         canvas: Canvas,
         weatherComplicationData: ComplicationData?,
         useShortDateFormat: Boolean,
-        isUserPremium: Boolean,
         calendar: Calendar,
         datePaint: Paint,
         spaceBeforeWeather: Int,
@@ -87,7 +85,7 @@ class DateAndWeatherDrawerImpl(
 
         val dateText = DateUtils.formatDateTime(context, calendar.timeInMillis, dateFormat).capitalize()
         val dateTextLength = datePaint.measureText(dateText)
-        val dateXOffset = if( isUserPremium && weatherComplicationData != null ) {
+        val dateXOffset = if( weatherComplicationData != null ) {
             val weatherText = weatherComplicationData.shortText
             val weatherIcon = weatherComplicationData.icon
 

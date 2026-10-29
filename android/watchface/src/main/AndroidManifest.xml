@@ -63,25 +63,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".settings.phonebattery.PhoneBatteryConfigurationActivity"
-            android:label="@string/phone_battery_configuration_title"/>
-
-        <activity
-            android:name=".settings.phonebattery.troubleshoot.PhoneBatterySyncTroubleshootActivity"
-            android:label="@string/phone_battery_configuration_troubleshoot_title"/>
-
-        <activity
-            android:name=".FeatureDropActivity"
-            android:label="@string/feature_drop_notification_title"/>
-
-        <activity android:name=".settings.notificationssync.betadisclaimer.BetaDisclaimerActivity" />
-
         <activity android:name="android.support.wearable.complications.ComplicationHelperActivity"/>
-
-        <activity android:name=".settings.ComplicationsPermissionRequestActivity" />
-
-        <activity android:name=".settings.ComplicationEditActivity" />
 
         <activity
             android:name=".helper.FullBrightnessActivity"
@@ -111,10 +93,6 @@
                 android:name="com.google.android.wearable.watchface.wearableConfigurationAction"
                 android:value="com.benoitletondor.pixelminimalwatchface.CONFIG_COMPLICATION_SIMPLE"/>
 
-            <meta-data
-                android:name="com.google.android.wearable.watchface.companionConfigurationAction"
-                android:value="com.benoitletondor.pixelminimalwatchface.PHONE_CONFIG" />
-
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService" />
                 <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
@@ -122,23 +100,7 @@
 
         </service>
 
-        <receiver
-            android:name=".AppUpdateReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-            </intent-filter>
-        </receiver>
-
         <activity android:name=".rating.FeedbackActivity" />
-
-        <activity android:name=".settings.notificationssync.NotificationsSyncConfigurationActivity" />
-
-        <activity android:name=".settings.notificationssync.troubleshoot.NotificationsSyncTroubleshootActivity" />
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
