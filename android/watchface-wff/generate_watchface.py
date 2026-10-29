@@ -289,7 +289,8 @@ def template(pattern, *expressions):
 
 
 def font(size, color, content, family=FONT, extra=""):
-    return '<Font family="%s" size="%s" color="%s"%s>%s</Font>' % (family, fmt(size), attr(color), extra, content)
+    # Integer sizes: the watch rendered the time with a wrong size when the size had decimals
+    return '<Font family="%s" size="%s" color="%s"%s>%s</Font>' % (family, px(size), attr(color), extra, content)
 
 
 def part_text(x, y, w, h, font_xml, align="CENTER"):
@@ -304,9 +305,14 @@ def centered_text(center_y, size, font_xml, x=0, w=SIZE, align="CENTER"):
 
 
 def part_image(x, y, w, h, resource, tint=None):
-    tint_attr = ' tintColor="%s"' % attr(tint) if tint else ""
-    return '<PartImage x="%s" y="%s" width="%s" height="%s"%s><Image resource="%s"/></PartImage>' % (
-        px(x), px(y), px(w), px(h), tint_attr, attr(resource))
+    image = '<PartImage x="%s" y="%s" width="%s" height="%s"%s><Image resource="%s"/></PartImage>'
+    if not tint:
+        return image % (px(x), px(y), px(w), px(h), "", attr(resource))
+    # Like the legacy watch face, the icon is filled with the color whatever its own colors: tintColor
+    # multiplies the colors, so the icon is used as a mask over a rectangle of the color instead.
+    fill = '<PartDraw x="0" y="0" width="%s" height="%s"><Rectangle x="0" y="0" width="%s" height="%s"><Fill color="%s"/></Rectangle></PartDraw>' % (
+        px(w), px(h), px(w), px(h), attr(tint))
+    return group([image % (0, 0, px(w), px(h), ' renderMode="MASK"', attr(resource)), fill], x, y, w, h)
 
 
 def inline_image(resource, size, color):
