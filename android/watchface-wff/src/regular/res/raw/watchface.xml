@@ -3923,8 +3923,8 @@
     <ComplicationSlot slotId="3" displayName="widget_bottom_widget" x="87" y="322" width="275" height="58" supportedTypes="LONG_TEXT SHORT_TEXT MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY">
       <BoundingRoundBox x="0" y="0" width="275" height="58" cornerRadius="29"/>
       <Complication type="LONG_TEXT">
-        <Group name="g286" x="0" y="0" width="275" height="58">
-          <Group name="g280" x="0" y="0" width="275" height="58">
+        <Group name="g292" x="0" y="0" width="275" height="58">
+          <Group name="g286" x="0" y="0" width="275" height="58">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Condition>
               <Expressions>
@@ -3933,37 +3933,43 @@
                 <Expression name="e253">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
               <Compare expression="e251">
-                <Group name="g271" x="6" y="14" width="30" height="30">
-                  <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                  </PartImage>
-                  <PartDraw x="0" y="0" width="30" height="30">
-                    <Rectangle x="0" y="0" width="30" height="30">
-                      <Fill color="[CONFIGURATION.widgetColor.3]"/>
-                    </Rectangle>
-                  </PartDraw>
+                <Group name="g272" x="0" y="0" width="275" height="58">
+                  <Transform target="x" value="clamp((275 - (38 + (textLength([COMPLICATION.TEXT]) * 13.2 &gt; textLength([COMPLICATION.TITLE]) * 11 ? textLength([COMPLICATION.TEXT]) * 13.2 : textLength([COMPLICATION.TITLE]) * 11))) / 2, 6, 122.5)"/>
+                  <Group name="g271" x="0" y="14" width="30" height="30">
+                    <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                      <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                    </PartImage>
+                    <PartDraw x="0" y="0" width="30" height="30">
+                      <Rectangle x="0" y="0" width="30" height="30">
+                        <Fill color="[CONFIGURATION.widgetColor.3]"/>
+                      </Rectangle>
+                    </PartDraw>
+                  </Group>
+                  <PartText x="38" y="4" width="231" height="30">
+                    <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                  </PartText>
+                  <PartText x="38" y="32" width="231" height="26">
+                    <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
+                  </PartText>
                 </Group>
-                <PartText x="44" y="4" width="225" height="30">
-                  <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                </PartText>
-                <PartText x="44" y="32" width="225" height="26">
-                  <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
-                </PartText>
               </Compare>
               <Compare expression="e252">
-                <Group name="g272" x="6" y="14" width="30" height="30">
-                  <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                  </PartImage>
-                  <PartDraw x="0" y="0" width="30" height="30">
-                    <Rectangle x="0" y="0" width="30" height="30">
-                      <Fill color="[CONFIGURATION.widgetColor.3]"/>
-                    </Rectangle>
-                  </PartDraw>
+                <Group name="g274" x="0" y="0" width="275" height="58">
+                  <Transform target="x" value="clamp((275 - (38 + textLength([COMPLICATION.TEXT]) * 14.3)) / 2, 6, 122.5)"/>
+                  <Group name="g273" x="0" y="14" width="30" height="30">
+                    <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                      <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                    </PartImage>
+                    <PartDraw x="0" y="0" width="30" height="30">
+                      <Rectangle x="0" y="0" width="30" height="30">
+                        <Fill color="[CONFIGURATION.widgetColor.3]"/>
+                      </Rectangle>
+                    </PartDraw>
+                  </Group>
+                  <PartText x="38" y="11" width="231" height="36">
+                    <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                  </PartText>
                 </Group>
-                <PartText x="44" y="11" width="225" height="36">
-                  <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                </PartText>
               </Compare>
               <Compare expression="e253">
                 <PartText x="6" y="4" width="263" height="30">
@@ -3985,16 +3991,16 @@
               <Expression name="e261">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
             <Compare expression="e261">
-              <Group name="g285" x="0" y="0" width="275" height="58">
-                <Group name="g284" x="0" y="0" width="275" height="58" alpha="0">
+              <Group name="g291" x="0" y="0" width="275" height="58">
+                <Group name="g290" x="0" y="0" width="275" height="58" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
                       <Expression name="e260">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
                     <Compare expression="e260">
-                      <Group name="g282" x="0" y="0" width="275" height="58">
-                        <Group name="g281" x="0" y="0" width="275" height="58" alpha="204">
+                      <Group name="g288" x="0" y="0" width="275" height="58">
+                        <Group name="g287" x="0" y="0" width="275" height="58" alpha="204">
                           <Condition>
                             <Expressions>
                               <Expression name="e254">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
@@ -4002,37 +4008,43 @@
                               <Expression name="e256">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
                             <Compare expression="e254">
-                              <Group name="g274" x="6" y="14" width="30" height="30">
-                                <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
-                                <PartDraw x="0" y="0" width="30" height="30">
-                                  <Rectangle x="0" y="0" width="30" height="30">
-                                    <Fill color="[CONFIGURATION.widgetColor.3]"/>
-                                  </Rectangle>
-                                </PartDraw>
+                              <Group name="g277" x="0" y="0" width="275" height="58">
+                                <Transform target="x" value="clamp((275 - (38 + (textLength([COMPLICATION.TEXT]) * 13.2 &gt; textLength([COMPLICATION.TITLE]) * 11 ? textLength([COMPLICATION.TEXT]) * 13.2 : textLength([COMPLICATION.TITLE]) * 11))) / 2, 6, 122.5)"/>
+                                <Group name="g276" x="0" y="14" width="30" height="30">
+                                  <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                                  </PartImage>
+                                  <PartDraw x="0" y="0" width="30" height="30">
+                                    <Rectangle x="0" y="0" width="30" height="30">
+                                      <Fill color="[CONFIGURATION.widgetColor.3]"/>
+                                    </Rectangle>
+                                  </PartDraw>
+                                </Group>
+                                <PartText x="38" y="4" width="231" height="30">
+                                  <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                                </PartText>
+                                <PartText x="38" y="32" width="231" height="26">
+                                  <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
+                                </PartText>
                               </Group>
-                              <PartText x="44" y="4" width="225" height="30">
-                                <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                              </PartText>
-                              <PartText x="44" y="32" width="225" height="26">
-                                <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
-                              </PartText>
                             </Compare>
                             <Compare expression="e255">
-                              <Group name="g275" x="6" y="14" width="30" height="30">
-                                <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
-                                <PartDraw x="0" y="0" width="30" height="30">
-                                  <Rectangle x="0" y="0" width="30" height="30">
-                                    <Fill color="[CONFIGURATION.widgetColor.3]"/>
-                                  </Rectangle>
-                                </PartDraw>
+                              <Group name="g279" x="0" y="0" width="275" height="58">
+                                <Transform target="x" value="clamp((275 - (38 + textLength([COMPLICATION.TEXT]) * 14.3)) / 2, 6, 122.5)"/>
+                                <Group name="g278" x="0" y="14" width="30" height="30">
+                                  <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                                  </PartImage>
+                                  <PartDraw x="0" y="0" width="30" height="30">
+                                    <Rectangle x="0" y="0" width="30" height="30">
+                                      <Fill color="[CONFIGURATION.widgetColor.3]"/>
+                                    </Rectangle>
+                                  </PartDraw>
+                                </Group>
+                                <PartText x="38" y="11" width="231" height="36">
+                                  <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                                </PartText>
                               </Group>
-                              <PartText x="44" y="11" width="225" height="36">
-                                <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                              </PartText>
                             </Compare>
                             <Compare expression="e256">
                               <PartText x="6" y="4" width="263" height="30">
@@ -4052,7 +4064,7 @@
                       </Group>
                     </Compare>
                     <Default>
-                      <Group name="g283" x="0" y="0" width="275" height="58">
+                      <Group name="g289" x="0" y="0" width="275" height="58">
                         <Condition>
                           <Expressions>
                             <Expression name="e257">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
@@ -4060,37 +4072,43 @@
                             <Expression name="e259">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
                           <Compare expression="e257">
-                            <Group name="g277" x="6" y="14" width="30" height="30">
-                              <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                                <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                              </PartImage>
-                              <PartDraw x="0" y="0" width="30" height="30">
-                                <Rectangle x="0" y="0" width="30" height="30">
-                                  <Fill color="#FFDDDDDD"/>
-                                </Rectangle>
-                              </PartDraw>
+                            <Group name="g282" x="0" y="0" width="275" height="58">
+                              <Transform target="x" value="clamp((275 - (38 + (textLength([COMPLICATION.TEXT]) * 13.2 &gt; textLength([COMPLICATION.TITLE]) * 11 ? textLength([COMPLICATION.TEXT]) * 13.2 : textLength([COMPLICATION.TITLE]) * 11))) / 2, 6, 122.5)"/>
+                              <Group name="g281" x="0" y="14" width="30" height="30">
+                                <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                                </PartImage>
+                                <PartDraw x="0" y="0" width="30" height="30">
+                                  <Rectangle x="0" y="0" width="30" height="30">
+                                    <Fill color="#FFDDDDDD"/>
+                                  </Rectangle>
+                                </PartDraw>
+                              </Group>
+                              <PartText x="38" y="4" width="231" height="30">
+                                <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                              </PartText>
+                              <PartText x="38" y="32" width="231" height="26">
+                                <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
+                              </PartText>
                             </Group>
-                            <PartText x="44" y="4" width="225" height="30">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                            </PartText>
-                            <PartText x="44" y="32" width="225" height="26">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
-                            </PartText>
                           </Compare>
                           <Compare expression="e258">
-                            <Group name="g278" x="6" y="14" width="30" height="30">
-                              <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                                <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                              </PartImage>
-                              <PartDraw x="0" y="0" width="30" height="30">
-                                <Rectangle x="0" y="0" width="30" height="30">
-                                  <Fill color="#FFDDDDDD"/>
-                                </Rectangle>
-                              </PartDraw>
+                            <Group name="g284" x="0" y="0" width="275" height="58">
+                              <Transform target="x" value="clamp((275 - (38 + textLength([COMPLICATION.TEXT]) * 14.3)) / 2, 6, 122.5)"/>
+                              <Group name="g283" x="0" y="14" width="30" height="30">
+                                <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                                </PartImage>
+                                <PartDraw x="0" y="0" width="30" height="30">
+                                  <Rectangle x="0" y="0" width="30" height="30">
+                                    <Fill color="#FFDDDDDD"/>
+                                  </Rectangle>
+                                </PartDraw>
+                              </Group>
+                              <PartText x="38" y="11" width="231" height="36">
+                                <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                              </PartText>
                             </Group>
-                            <PartText x="44" y="11" width="225" height="36">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                            </PartText>
                           </Compare>
                           <Compare expression="e259">
                             <PartText x="6" y="4" width="263" height="30">
@@ -4116,8 +4134,8 @@
         </Group>
       </Complication>
       <Complication type="SHORT_TEXT">
-        <Group name="g293" x="0" y="0" width="275" height="58">
-          <Group name="g287" x="0" y="0" width="275" height="58">
+        <Group name="g299" x="0" y="0" width="275" height="58">
+          <Group name="g293" x="0" y="0" width="275" height="58">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <Condition>
               <Expressions>
@@ -4126,37 +4144,43 @@
                 <Expression name="e253">[COMPLICATION.TITLE] != null</Expression>
               </Expressions>
               <Compare expression="e251">
-                <Group name="g271" x="6" y="14" width="30" height="30">
-                  <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                  </PartImage>
-                  <PartDraw x="0" y="0" width="30" height="30">
-                    <Rectangle x="0" y="0" width="30" height="30">
-                      <Fill color="[CONFIGURATION.widgetColor.3]"/>
-                    </Rectangle>
-                  </PartDraw>
+                <Group name="g272" x="0" y="0" width="275" height="58">
+                  <Transform target="x" value="clamp((275 - (38 + (textLength([COMPLICATION.TEXT]) * 13.2 &gt; textLength([COMPLICATION.TITLE]) * 11 ? textLength([COMPLICATION.TEXT]) * 13.2 : textLength([COMPLICATION.TITLE]) * 11))) / 2, 6, 122.5)"/>
+                  <Group name="g271" x="0" y="14" width="30" height="30">
+                    <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                      <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                    </PartImage>
+                    <PartDraw x="0" y="0" width="30" height="30">
+                      <Rectangle x="0" y="0" width="30" height="30">
+                        <Fill color="[CONFIGURATION.widgetColor.3]"/>
+                      </Rectangle>
+                    </PartDraw>
+                  </Group>
+                  <PartText x="38" y="4" width="231" height="30">
+                    <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                  </PartText>
+                  <PartText x="38" y="32" width="231" height="26">
+                    <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
+                  </PartText>
                 </Group>
-                <PartText x="44" y="4" width="225" height="30">
-                  <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                </PartText>
-                <PartText x="44" y="32" width="225" height="26">
-                  <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
-                </PartText>
               </Compare>
               <Compare expression="e252">
-                <Group name="g272" x="6" y="14" width="30" height="30">
-                  <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                  </PartImage>
-                  <PartDraw x="0" y="0" width="30" height="30">
-                    <Rectangle x="0" y="0" width="30" height="30">
-                      <Fill color="[CONFIGURATION.widgetColor.3]"/>
-                    </Rectangle>
-                  </PartDraw>
+                <Group name="g274" x="0" y="0" width="275" height="58">
+                  <Transform target="x" value="clamp((275 - (38 + textLength([COMPLICATION.TEXT]) * 14.3)) / 2, 6, 122.5)"/>
+                  <Group name="g273" x="0" y="14" width="30" height="30">
+                    <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                      <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                    </PartImage>
+                    <PartDraw x="0" y="0" width="30" height="30">
+                      <Rectangle x="0" y="0" width="30" height="30">
+                        <Fill color="[CONFIGURATION.widgetColor.3]"/>
+                      </Rectangle>
+                    </PartDraw>
+                  </Group>
+                  <PartText x="38" y="11" width="231" height="36">
+                    <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                  </PartText>
                 </Group>
-                <PartText x="44" y="11" width="225" height="36">
-                  <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                </PartText>
               </Compare>
               <Compare expression="e253">
                 <PartText x="6" y="4" width="263" height="30">
@@ -4178,16 +4202,16 @@
               <Expression name="e263">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
             <Compare expression="e263">
-              <Group name="g292" x="0" y="0" width="275" height="58">
-                <Group name="g291" x="0" y="0" width="275" height="58" alpha="0">
+              <Group name="g298" x="0" y="0" width="275" height="58">
+                <Group name="g297" x="0" y="0" width="275" height="58" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
                       <Expression name="e262">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
                     <Compare expression="e262">
-                      <Group name="g289" x="0" y="0" width="275" height="58">
-                        <Group name="g288" x="0" y="0" width="275" height="58" alpha="204">
+                      <Group name="g295" x="0" y="0" width="275" height="58">
+                        <Group name="g294" x="0" y="0" width="275" height="58" alpha="204">
                           <Condition>
                             <Expressions>
                               <Expression name="e254">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
@@ -4195,37 +4219,43 @@
                               <Expression name="e256">[COMPLICATION.TITLE] != null</Expression>
                             </Expressions>
                             <Compare expression="e254">
-                              <Group name="g274" x="6" y="14" width="30" height="30">
-                                <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
-                                <PartDraw x="0" y="0" width="30" height="30">
-                                  <Rectangle x="0" y="0" width="30" height="30">
-                                    <Fill color="[CONFIGURATION.widgetColor.3]"/>
-                                  </Rectangle>
-                                </PartDraw>
+                              <Group name="g277" x="0" y="0" width="275" height="58">
+                                <Transform target="x" value="clamp((275 - (38 + (textLength([COMPLICATION.TEXT]) * 13.2 &gt; textLength([COMPLICATION.TITLE]) * 11 ? textLength([COMPLICATION.TEXT]) * 13.2 : textLength([COMPLICATION.TITLE]) * 11))) / 2, 6, 122.5)"/>
+                                <Group name="g276" x="0" y="14" width="30" height="30">
+                                  <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                                  </PartImage>
+                                  <PartDraw x="0" y="0" width="30" height="30">
+                                    <Rectangle x="0" y="0" width="30" height="30">
+                                      <Fill color="[CONFIGURATION.widgetColor.3]"/>
+                                    </Rectangle>
+                                  </PartDraw>
+                                </Group>
+                                <PartText x="38" y="4" width="231" height="30">
+                                  <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                                </PartText>
+                                <PartText x="38" y="32" width="231" height="26">
+                                  <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
+                                </PartText>
                               </Group>
-                              <PartText x="44" y="4" width="225" height="30">
-                                <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="[CONFIGURATION.widgetColor.3]"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                              </PartText>
-                              <PartText x="44" y="32" width="225" height="26">
-                                <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
-                              </PartText>
                             </Compare>
                             <Compare expression="e255">
-                              <Group name="g275" x="6" y="14" width="30" height="30">
-                                <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
-                                <PartDraw x="0" y="0" width="30" height="30">
-                                  <Rectangle x="0" y="0" width="30" height="30">
-                                    <Fill color="[CONFIGURATION.widgetColor.3]"/>
-                                  </Rectangle>
-                                </PartDraw>
+                              <Group name="g279" x="0" y="0" width="275" height="58">
+                                <Transform target="x" value="clamp((275 - (38 + textLength([COMPLICATION.TEXT]) * 14.3)) / 2, 6, 122.5)"/>
+                                <Group name="g278" x="0" y="14" width="30" height="30">
+                                  <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                                  </PartImage>
+                                  <PartDraw x="0" y="0" width="30" height="30">
+                                    <Rectangle x="0" y="0" width="30" height="30">
+                                      <Fill color="[CONFIGURATION.widgetColor.3]"/>
+                                    </Rectangle>
+                                  </PartDraw>
+                                </Group>
+                                <PartText x="38" y="11" width="231" height="36">
+                                  <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                                </PartText>
                               </Group>
-                              <PartText x="44" y="11" width="225" height="36">
-                                <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                              </PartText>
                             </Compare>
                             <Compare expression="e256">
                               <PartText x="6" y="4" width="263" height="30">
@@ -4245,7 +4275,7 @@
                       </Group>
                     </Compare>
                     <Default>
-                      <Group name="g290" x="0" y="0" width="275" height="58">
+                      <Group name="g296" x="0" y="0" width="275" height="58">
                         <Condition>
                           <Expressions>
                             <Expression name="e257">[COMPLICATION.MONOCHROMATIC_IMAGE] != null &amp;&amp; [COMPLICATION.TITLE] != null</Expression>
@@ -4253,37 +4283,43 @@
                             <Expression name="e259">[COMPLICATION.TITLE] != null</Expression>
                           </Expressions>
                           <Compare expression="e257">
-                            <Group name="g277" x="6" y="14" width="30" height="30">
-                              <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                                <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                              </PartImage>
-                              <PartDraw x="0" y="0" width="30" height="30">
-                                <Rectangle x="0" y="0" width="30" height="30">
-                                  <Fill color="#FFDDDDDD"/>
-                                </Rectangle>
-                              </PartDraw>
+                            <Group name="g282" x="0" y="0" width="275" height="58">
+                              <Transform target="x" value="clamp((275 - (38 + (textLength([COMPLICATION.TEXT]) * 13.2 &gt; textLength([COMPLICATION.TITLE]) * 11 ? textLength([COMPLICATION.TEXT]) * 13.2 : textLength([COMPLICATION.TITLE]) * 11))) / 2, 6, 122.5)"/>
+                              <Group name="g281" x="0" y="14" width="30" height="30">
+                                <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                                </PartImage>
+                                <PartDraw x="0" y="0" width="30" height="30">
+                                  <Rectangle x="0" y="0" width="30" height="30">
+                                    <Fill color="#FFDDDDDD"/>
+                                  </Rectangle>
+                                </PartDraw>
+                              </Group>
+                              <PartText x="38" y="4" width="231" height="30">
+                                <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                              </PartText>
+                              <PartText x="38" y="32" width="231" height="26">
+                                <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
+                              </PartText>
                             </Group>
-                            <PartText x="44" y="4" width="225" height="30">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="24" color="#FFDDDDDD"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                            </PartText>
-                            <PartText x="44" y="32" width="225" height="26">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="20" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TITLE]"/></Template></Font></Text>
-                            </PartText>
                           </Compare>
                           <Compare expression="e258">
-                            <Group name="g278" x="6" y="14" width="30" height="30">
-                              <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
-                                <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                              </PartImage>
-                              <PartDraw x="0" y="0" width="30" height="30">
-                                <Rectangle x="0" y="0" width="30" height="30">
-                                  <Fill color="#FFDDDDDD"/>
-                                </Rectangle>
-                              </PartDraw>
+                            <Group name="g284" x="0" y="0" width="275" height="58">
+                              <Transform target="x" value="clamp((275 - (38 + textLength([COMPLICATION.TEXT]) * 14.3)) / 2, 6, 122.5)"/>
+                              <Group name="g283" x="0" y="14" width="30" height="30">
+                                <PartImage x="0" y="0" width="30" height="30" renderMode="MASK">
+                                  <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                                </PartImage>
+                                <PartDraw x="0" y="0" width="30" height="30">
+                                  <Rectangle x="0" y="0" width="30" height="30">
+                                    <Fill color="#FFDDDDDD"/>
+                                  </Rectangle>
+                                </PartDraw>
+                              </Group>
+                              <PartText x="38" y="11" width="231" height="36">
+                                <Text align="START" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
+                              </PartText>
                             </Group>
-                            <PartText x="44" y="11" width="225" height="36">
-                              <Text align="CENTER" ellipsis="TRUE"><Font family="product_sans_regular" size="26" color="#FFAAAAAA"><Template><![CDATA[%s]]><Parameter expression="[COMPLICATION.TEXT]"/></Template></Font></Text>
-                            </PartText>
                           </Compare>
                           <Compare expression="e259">
                             <PartText x="6" y="4" width="263" height="30">
@@ -4309,10 +4345,10 @@
         </Group>
       </Complication>
       <Complication type="MONOCHROMATIC_IMAGE">
-        <Group name="g300" x="0" y="0" width="275" height="58">
-          <Group name="g294" x="0" y="0" width="275" height="58">
+        <Group name="g306" x="0" y="0" width="275" height="58">
+          <Group name="g300" x="0" y="0" width="275" height="58">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
-            <Group name="g273" x="118" y="9" width="40" height="40">
+            <Group name="g275" x="118" y="9" width="40" height="40">
               <PartImage x="0" y="0" width="40" height="40" renderMode="MASK">
                 <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
               </PartImage>
@@ -4328,17 +4364,17 @@
               <Expression name="e265">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
             <Compare expression="e265">
-              <Group name="g299" x="0" y="0" width="275" height="58">
-                <Group name="g298" x="0" y="0" width="275" height="58" alpha="0">
+              <Group name="g305" x="0" y="0" width="275" height="58">
+                <Group name="g304" x="0" y="0" width="275" height="58" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
                       <Expression name="e264">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
                     <Compare expression="e264">
-                      <Group name="g296" x="0" y="0" width="275" height="58">
-                        <Group name="g295" x="0" y="0" width="275" height="58" alpha="204">
-                          <Group name="g276" x="118" y="9" width="40" height="40">
+                      <Group name="g302" x="0" y="0" width="275" height="58">
+                        <Group name="g301" x="0" y="0" width="275" height="58" alpha="204">
+                          <Group name="g280" x="118" y="9" width="40" height="40">
                             <PartImage x="0" y="0" width="40" height="40" renderMode="MASK">
                               <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                             </PartImage>
@@ -4352,8 +4388,8 @@
                       </Group>
                     </Compare>
                     <Default>
-                      <Group name="g297" x="0" y="0" width="275" height="58">
-                        <Group name="g279" x="118" y="9" width="40" height="40">
+                      <Group name="g303" x="0" y="0" width="275" height="58">
+                        <Group name="g285" x="118" y="9" width="40" height="40">
                           <PartImage x="0" y="0" width="40" height="40" renderMode="MASK">
                             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                           </PartImage>
@@ -4373,8 +4409,8 @@
         </Group>
       </Complication>
       <Complication type="SMALL_IMAGE">
-        <Group name="g307" x="0" y="0" width="275" height="58">
-          <Group name="g301" x="0" y="0" width="275" height="58">
+        <Group name="g313" x="0" y="0" width="275" height="58">
+          <Group name="g307" x="0" y="0" width="275" height="58">
             <Variant mode="AMBIENT" target="alpha" value="0"/>
             <PartImage x="112" y="4" width="50" height="50">
               <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
@@ -4385,16 +4421,16 @@
               <Expression name="e267">[CONFIGURATION.ambientWidgets] == "TRUE"</Expression>
             </Expressions>
             <Compare expression="e267">
-              <Group name="g306" x="0" y="0" width="275" height="58">
-                <Group name="g305" x="0" y="0" width="275" height="58" alpha="0">
+              <Group name="g312" x="0" y="0" width="275" height="58">
+                <Group name="g311" x="0" y="0" width="275" height="58" alpha="0">
                   <Variant mode="AMBIENT" target="alpha" value="255"/>
                   <Condition>
                     <Expressions>
                       <Expression name="e266">[CONFIGURATION.ambientColors] == "TRUE"</Expression>
                     </Expressions>
                     <Compare expression="e266">
-                      <Group name="g303" x="0" y="0" width="275" height="58">
-                        <Group name="g302" x="0" y="0" width="275" height="58" alpha="204">
+                      <Group name="g309" x="0" y="0" width="275" height="58">
+                        <Group name="g308" x="0" y="0" width="275" height="58" alpha="204">
                           <PartImage x="112" y="4" width="50" height="50">
                             <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
                           </PartImage>
@@ -4402,7 +4438,7 @@
                       </Group>
                     </Compare>
                     <Default>
-                      <Group name="g304" x="0" y="0" width="275" height="58">
+                      <Group name="g310" x="0" y="0" width="275" height="58">
                         <PartImage x="112" y="4" width="50" height="50">
                           <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
                         </PartImage>

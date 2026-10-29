@@ -49,6 +49,8 @@ RING_TRACK_COLOR = "#FF3C3C3C"
 
 # Product Sans metrics, in em: digits are 0.7em high and text is vertically centered on its line box.
 DIGIT_HEIGHT = 0.7
+# Average advance of a character, to estimate the width of a text
+CHAR_WIDTH = 0.55
 
 
 def attr(value):
@@ -214,12 +216,13 @@ SHOW_IN_AMBIENT = '<Variant mode="AMBIENT" target="alpha" value="255"/>'
 _group_count = [0]
 
 
-def group(children, x=0, y=0, w=SIZE, h=SIZE, name=None, variants="", alpha=None):
+def group(children, x=0, y=0, w=SIZE, h=SIZE, name=None, variants="", alpha=None, x_expression=None):
     _group_count[0] += 1
     name = name or "g%d" % _group_count[0]
     alpha_attr = ' alpha="%s"' % alpha if alpha is not None else ""
-    return '<Group name="%s" x="%s" y="%s" width="%s" height="%s"%s>%s%s</Group>' % (
-        name, px(x), px(y), px(w), px(h), alpha_attr, variants, "".join(children))
+    transform = '<Transform target="x" value="%s"/>' % attr(x_expression) if x_expression else ""
+    return '<Group name="%s" x="%s" y="%s" width="%s" height="%s"%s>%s%s%s</Group>' % (
+        name, px(x), px(y), px(w), px(h), alpha_attr, variants, transform, "".join(children))
 
 
 def active_only(children, w=SIZE, h=SIZE):
@@ -469,8 +472,8 @@ IMAGE = "[COMPLICATION.MONOCHROMATIC_IMAGE] != null"
 TITLE = "[COMPLICATION.TITLE] != null"
 
 
-def text_part(x, y, w, h, size, color, source):
-    return part_text(x, y, w, h, font(size, color, template("%s", source)))
+def text_part(x, y, w, h, size, color, source, align="CENTER"):
+    return part_text(x, y, w, h, font(size, color, template("%s", source)), align)
 
 
 def round_widget_texts(s, primary, secondary, scale=1.0):
@@ -525,17 +528,30 @@ def round_widget(s, primary, secondary):
 def wide_widget(w, h, primary, secondary):
     """Bottom widget: icon on the left and text, like the legacy long text layout."""
     icon = 30
-    text_x = icon + 14
+    gap = 8
+    text_x = icon + gap
+    text_w = w - text_x - 6
+
+    def centered_with_icon(text_width_expression, children):
+        """Icon and text are centered together. The text width can't be measured in WFF, so it is
+        estimated from its number of characters."""
+        x = "clamp((%s - (%s + %s)) / 2, 6, %s)" % (w, text_x, text_width_expression, (w - icon) / 2)
+        return [group([part_image(0, (h - icon) / 2, icon, icon, "[COMPLICATION.MONOCHROMATIC_IMAGE]", primary)] + children,
+                      w=w, h=h, x_expression=x)]
+
+    def text_width(source, size):
+        return "textLength(%s) * %s" % (source, fmt(size * CHAR_WIDTH))
+
     texts = [condition([
-        ("%s && %s" % (IMAGE, TITLE), [
-            part_image(6, (h - icon) / 2, icon, icon, "[COMPLICATION.MONOCHROMATIC_IMAGE]", primary),
-            text_part(text_x, 4, w - text_x - 6, 30, 24, primary, "[COMPLICATION.TEXT]"),
-            text_part(text_x, 32, w - text_x - 6, 26, 20, secondary, "[COMPLICATION.TITLE]"),
-        ]),
-        (IMAGE, [
-            part_image(6, (h - icon) / 2, icon, icon, "[COMPLICATION.MONOCHROMATIC_IMAGE]", primary),
-            text_part(text_x, (h - 36) / 2, w - text_x - 6, 36, 26, secondary, "[COMPLICATION.TEXT]"),
-        ]),
+        ("%s && %s" % (IMAGE, TITLE), centered_with_icon(
+            "(%s > %s ? %s : %s)" % (text_width("[COMPLICATION.TEXT]", 24), text_width("[COMPLICATION.TITLE]", 20),
+                                     text_width("[COMPLICATION.TEXT]", 24), text_width("[COMPLICATION.TITLE]", 20)), [
+            text_part(text_x, 4, text_w, 30, 24, primary, "[COMPLICATION.TEXT]", align="START"),
+            text_part(text_x, 32, text_w, 26, 20, secondary, "[COMPLICATION.TITLE]", align="START"),
+        ])),
+        (IMAGE, centered_with_icon(text_width("[COMPLICATION.TEXT]", 26), [
+            text_part(text_x, (h - 36) / 2, text_w, 36, 26, secondary, "[COMPLICATION.TEXT]", align="START"),
+        ])),
         (TITLE, [
             text_part(6, 4, w - 12, 30, 24, primary, "[COMPLICATION.TEXT]"),
             text_part(6, 32, w - 12, 26, 20, secondary, "[COMPLICATION.TITLE]"),
