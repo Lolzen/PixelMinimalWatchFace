@@ -20,6 +20,21 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check that the generated WFF watch faces are up to date
+        run: |
+          WFF_SKIP_PREVIEWS=1 python3 watchface-wff/generate_watchface.py
+          git diff --exit-code -- watchface-wff
+
+      - name: Validate WFF watch faces against the Watch Face Format schema
+        run: |
+          pip install xmlschema
+          git clone --depth 1 https://github.com/google/watchface.git "$RUNNER_TEMP/watchface"
+          python3 watchface-wff/validate_watchface.py "$RUNNER_TEMP/watchface/third_party/wff/specification/documents" 2 watchface-wff/src/*/res/raw/watchface.xml
+
       - name: Build debug APKs
         run: ./gradlew assembleDebug
 
@@ -27,3 +42,8 @@ jobs:
         with:
           name: watchface-debug-apk
           path: android/watchface/build/outputs/apk/debug/*.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: watchface-wff-debug-apks
+          path: android/watchface-wff/build/outputs/apk/*/debug/*.apk
